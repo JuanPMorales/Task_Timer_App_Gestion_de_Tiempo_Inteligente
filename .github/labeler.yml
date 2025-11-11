@@ -1,0 +1,42 @@
+# Configuración de etiquetas automáticas basadas en archivos modificados
+
+'area: core':
+  - 'lib/core/**/*'
+
+'area: data':
+  - 'lib/data/**/*'
+
+'area: domain':
+  - 'lib/domain/**/*'
+
+'area: presentation':
+  - 'lib/presentation/**/*'
+
+'area: services':
+  - 'lib/services/**/*'
+
+'area: tests':
+  - 'test/**/*'
+  - '**/*_test.dart'
+
+'area: docs':
+  - 'docs/**/*'
+  - '*.md'
+  - 'README.md'
+  - 'CONTRIBUTING.md'
+  - 'CHANGELOG.md'
+
+'area: ci/cd':
+  - '.github/**/*'
+  - '.github/workflows/**/*'
+
+'area: config':
+  - 'pubspec.yaml'
+  - 'analysis_options.yaml'
+  - '.gitignore'
+  - 'android/**/*'
+  - 'ios/**/*'
+
+'dependencies':
+  - 'pubspec.yaml'
+  - 'pubspec.lock'

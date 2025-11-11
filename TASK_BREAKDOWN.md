@@ -46,9 +46,9 @@ Las tareas con dependencias se marcan con `⚠️ Depende de: [ID]`
 | 1.1.1 | Instalar Flutter 3.19+ y Dart 3.3+ | ✅ Completada | - |
 | 1.1.2 | Instalar y configurar IDE (Android Studio/VS Code + extensiones Flutter/Dart) | ✅ Completada | 1.1.1 |
 | 1.1.3 | Configurar emuladores/simuladores (Android API 33+, iOS 16+) | ✅ Completada | 1.1.2 |
-| 1.1.4 | Inicializar repositorio Git con estructura de ramas | ⏳ Pendiente | - |
-| 1.1.5 | Crear archivos base del proyecto: `.gitignore`, `README.md`, `LICENSE`, `CHANGELOG.md` | ⏳ Pendiente | 1.1.4 |
-| 1.1.6 | Establecer estrategia de branching: `main`, `dev`, `feature/*`, `hotfix/*` | ⏳ Pendiente | 1.1.4 |
+| 1.1.4 | Inicializar repositorio Git con estructura de ramas | ✅ Completada | - |
+| 1.1.5 | Crear archivos base del proyecto: `.gitignore`, `README.md`, `LICENSE`, `CHANGELOG.md` | ✅ Completada | 1.1.4 |
+| 1.1.6 | Establecer estrategia de branching: `main`, `develop`, `feature/*`, `release/*`, `hotfix/*` | ✅ Completada | 1.1.4 |
 | 1.1.7 | Configurar CI/CD inicial con GitHub Actions (lint + test básico) | ⏳ Pendiente | 1.1.4 |
 | 1.1.8 | Definir y agregar dependencias iniciales en `pubspec.yaml` según MVP_TECNICO.md | ⏳ Pendiente | 1.1.1 |
 | 1.1.9 | Configurar análisis estático de código (`flutter_lints`, `analysis_options.yaml`) | ⏳ Pendiente | 1.1.8 |

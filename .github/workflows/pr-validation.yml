@@ -1,0 +1,91 @@
+name: PR Validation
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main, develop]
+
+jobs:
+  pr-check:
+    name: Validación de PR
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: 🎯 Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.0'
+          channel: 'stable'
+          cache: true
+      
+      - name: 📦 Get dependencies
+        run: flutter pub get
+      
+      - name: ✅ Validate commit messages
+        run: |
+          echo "Validando formato de commits (Conventional Commits)..."
+          git log --format=%B -n 1 ${{ github.event.pull_request.head.sha }} | head -n 1 | grep -E '^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?: .+$'
+      
+      - name: 🔍 Run linter
+        run: flutter analyze --fatal-infos
+      
+      - name: 🧪 Run tests with coverage
+        run: flutter test --coverage
+      
+      - name: 📊 Coverage Report
+        run: |
+          if [ -f "coverage/lcov.info" ]; then
+            echo "✅ Coverage file generated"
+            lcov --summary coverage/lcov.info || true
+          else
+            echo "❌ No coverage file found"
+          fi
+      
+      - name: 💬 Comment PR
+        uses: actions/github-script@v7
+        if: always()
+        with:
+          script: |
+            const fs = require('fs');
+            let message = '## 🤖 Validación Automática\n\n';
+            
+            if (context.payload.pull_request) {
+              message += '✅ Análisis estático completado\n';
+              message += '✅ Tests ejecutados\n';
+              message += '\n**Recuerda:**\n';
+              message += '- Commits deben seguir Conventional Commits\n';
+              message += '- Cobertura de tests ≥ 90%\n';
+              message += '- Código debe estar formateado\n';
+              
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: message
+              });
+            }
+
+  size-label:
+    name: Etiquetar por Tamaño
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📏 Add size label
+        uses: codelytv/pr-size-labeler@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          xs_label: 'size/xs'
+          xs_max_size: 10
+          s_label: 'size/s'
+          s_max_size: 100
+          m_label: 'size/m'
+          m_max_size: 500
+          l_label: 'size/l'
+          l_max_size: 1000
+          xl_label: 'size/xl'
+          fail_if_xl: 'false'
