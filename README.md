@@ -38,8 +38,8 @@
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/JuanPMorales/task-timer-app.git
-cd task-timer-app
+git clone https://github.com/JuanPMorales/Task_Timer_App_Gestion_de_Tiempo_Inteligente.git
+cd Task_Timer_App_Gestion_de_Tiempo_Inteligente
 
 # Instalar dependencias
 flutter pub get
@@ -129,26 +129,29 @@ Ver `pubspec.yaml` para lista completa.
 
 ---
 
-## 🗂️ Estructura de Ramas
+## 🗂️ Estructura de Ramas (GitFlow)
 
-- **`main`**: Producción (código estable)
-- **`dev`**: Desarrollo activo
+- **`main`**: Producción (código estable, releases)
+- **`develop`**: Integración de desarrollo (rama base)
 - **`feature/*`**: Nuevas funcionalidades
-- **`hotfix/*`**: Correcciones urgentes
+- **`release/*`**: Preparación de versiones
+- **`hotfix/*`**: Correcciones urgentes en producción
+
+📚 **Ver documentación completa**: [GITFLOW.md](GITFLOW.md)
 
 ---
 
 ## 🤝 Contribución
 
-Las contribuciones son bienvenidas. Por favor:
+Las contribuciones son bienvenidas. Seguimos **GitFlow** y **Conventional Commits**:
 
 1. Fork el proyecto
-2. Crea una rama feature: `git checkout -b feature/nueva-funcionalidad`
-3. Commit tus cambios: `git commit -m 'feat: añadir nueva funcionalidad'`
-4. Push a la rama: `git push origin feature/nueva-funcionalidad`
-5. Abre un Pull Request
+2. Crea una rama feature desde `develop`: `git checkout -b feature/nueva-funcionalidad develop`
+3. Commit con formato convencional: `git commit -m 'feat(scope): descripción'`
+4. Push a tu fork: `git push origin feature/nueva-funcionalidad`
+5. Abre un Pull Request hacia `develop`
 
-Ver [CONTRIBUTING.md](CONTRIBUTING.md) para más detalles.
+Ver [CONTRIBUTING.md](CONTRIBUTING.md) y [GITFLOW.md](GITFLOW.md) para más detalles.
 
 ---
 
