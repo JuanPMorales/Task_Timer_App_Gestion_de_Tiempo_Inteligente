@@ -49,7 +49,7 @@ Las tareas con dependencias se marcan con `⚠️ Depende de: [ID]`
 | 1.1.4 | Inicializar repositorio Git con estructura de ramas | ✅ Completada | - |
 | 1.1.5 | Crear archivos base del proyecto: `.gitignore`, `README.md`, `LICENSE`, `CHANGELOG.md` | ✅ Completada | 1.1.4 |
 | 1.1.6 | Establecer estrategia de branching: `main`, `develop`, `feature/*`, `release/*`, `hotfix/*` | ✅ Completada | 1.1.4 |
-| 1.1.7 | Configurar CI/CD inicial con GitHub Actions (lint + test básico) | ⏳ Pendiente | 1.1.4 |
+| 1.1.7 | Configurar CI/CD inicial con GitHub Actions (lint + test básico) | ✅ Completada | 1.1.4 |
 | 1.1.8 | Definir y agregar dependencias iniciales en `pubspec.yaml` según MVP_TECNICO.md | ⏳ Pendiente | 1.1.1 |
 | 1.1.9 | Configurar análisis estático de código (`flutter_lints`, `analysis_options.yaml`) | ⏳ Pendiente | 1.1.8 |
 | 1.1.10 | Configurar internacionalización (`flutter_localizations`, `intl`) | ⏳ Pendiente | 1.1.8 |
