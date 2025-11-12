@@ -2,6 +2,8 @@
 
 ¡Gracias por tu interés en contribuir a **Task Timer App**! Este documento proporciona directrices para contribuir al proyecto.
 
+> 📚 **Documentación completa**: Ver [docs/README.md](docs/README.md) para índice de toda la documentación
+
 ---
 
 ## 📋 Tabla de Contenidos
@@ -13,6 +15,7 @@
 5. [Commits y Mensajes](#commits-y-mensajes)
 6. [Pull Requests](#pull-requests)
 7. [Testing](#testing)
+8. [Documentación Relacionada](#documentación-relacionada)
 
 ---
 
@@ -350,6 +353,21 @@ Si tienes dudas:
 - [Clean Architecture en Flutter](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 - [Riverpod Documentation](https://riverpod.dev/)
 - [Conventional Commits](https://www.conventionalcommits.org/)
+
+---
+
+## 📖 Documentación Relacionada
+
+### Documentación del Proyecto
+- **[📚 Índice Principal](docs/README.md)** - Navegación completa
+- [GitFlow Strategy](docs/GITFLOW.md) - Workflow de branches
+- [Linting Guide](docs/LINTING.md) - Estándares de código
+- [CI/CD Documentation](docs/CI_CD.md) - Pipelines y workflows
+- [Dependencies Guide](docs/DEPENDENCIES.md) - Paquetes del proyecto
+- [Task Breakdown](docs/TASK_BREAKDOWN.md) - Tareas del proyecto
+
+### Progreso de Desarrollo
+- [docs/progress/](docs/progress/) - Resúmenes de cada tarea completada
 
 ---
 

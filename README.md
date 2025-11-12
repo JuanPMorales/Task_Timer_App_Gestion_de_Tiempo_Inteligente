@@ -179,12 +179,27 @@ Este proyecto está bajo la Licencia MIT. Ver [LICENSE](LICENSE) para más infor
 
 ---
 
-## 📚 Documentación Adicional
+## 📚 Documentación
 
-- [Product Requirements Document (PRD)](task_timer_prd.md)
-- [MVP Técnico](task_timer_mvp_tecnico.md)
-- [Desglose de Tareas](TASK_BREAKDOWN.md)
-- [Reglas para IA](IA_RULES.md)
+### 📖 Documentación Principal
+- **[📚 Índice de Documentación](docs/README.md)** - Navegación completa de toda la documentación
+- [Product Requirements Document (PRD)](docs/task_timer_prd.md)
+- [MVP Técnico](docs/task_timer_mvp_tecnico.md)
+- [Desglose de Tareas](docs/TASK_BREAKDOWN.md)
+- [Arquitectura del Sistema](docs/ARCHITECTURE.md)
+
+### 🔧 Guías Técnicas
+- [Dependencias del Proyecto](docs/DEPENDENCIES.md) - Guía completa de paquetes
+- [Configuración de Linting](docs/LINTING.md) - Estándares de código
+- [CI/CD con GitHub Actions](docs/CI_CD.md) - Pipelines automatizados
+- [Estrategia GitFlow](docs/GITFLOW.md) - Workflow de Git
+
+### 📊 Progreso de Desarrollo
+Ver la carpeta [docs/progress/](docs/progress/) para resúmenes detallados de cada tarea completada:
+- [1.1.1 - Flutter & Dart](docs/progress/1.1.1_flutter_dart_instalacion.md)
+- [1.1.2 - IDE Configuración](docs/progress/1.1.2_ide_configuracion.md)
+- [1.1.3 - Emuladores](docs/progress/1.1.3_emuladores_configuracion.md)
+- Y más...
 
 ---
 
