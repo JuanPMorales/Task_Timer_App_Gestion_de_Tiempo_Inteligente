@@ -1,0 +1,197 @@
+{
+  "@@locale": "es",
+  "appTitle": "Task Timer",
+  "@appTitle": {
+    "description": "Título de la aplicación"
+  },
+  "tasks": "Tareas",
+  "@tasks": {
+    "description": "Etiqueta para la sección de tareas"
+  },
+  "timer": "Temporizador",
+  "@timer": {
+    "description": "Etiqueta para el temporizador"
+  },
+  "statistics": "Estadísticas",
+  "@statistics": {
+    "description": "Etiqueta para la sección de estadísticas"
+  },
+  "settings": "Configuración",
+  "@settings": {
+    "description": "Etiqueta para configuración"
+  },
+  "createTask": "Crear Tarea",
+  "@createTask": {
+    "description": "Botón para crear nueva tarea"
+  },
+  "editTask": "Editar Tarea",
+  "@editTask": {
+    "description": "Botón para editar tarea"
+  },
+  "deleteTask": "Eliminar Tarea",
+  "@deleteTask": {
+    "description": "Botón para eliminar tarea"
+  },
+  "taskTitle": "Título",
+  "@taskTitle": {
+    "description": "Campo de título de tarea"
+  },
+  "taskDescription": "Descripción",
+  "@taskDescription": {
+    "description": "Campo de descripción de tarea"
+  },
+  "taskEstimatedTime": "Tiempo Estimado",
+  "@taskEstimatedTime": {
+    "description": "Tiempo estimado para completar la tarea"
+  },
+  "taskPriority": "Prioridad",
+  "@taskPriority": {
+    "description": "Prioridad de la tarea"
+  },
+  "priorityHigh": "Alta",
+  "@priorityHigh": {
+    "description": "Prioridad alta"
+  },
+  "priorityMedium": "Media",
+  "@priorityMedium": {
+    "description": "Prioridad media"
+  },
+  "priorityLow": "Baja",
+  "@priorityLow": {
+    "description": "Prioridad baja"
+  },
+  "start": "Iniciar",
+  "@start": {
+    "description": "Botón para iniciar temporizador"
+  },
+  "pause": "Pausar",
+  "@pause": {
+    "description": "Botón para pausar temporizador"
+  },
+  "resume": "Reanudar",
+  "@resume": {
+    "description": "Botón para reanudar temporizador"
+  },
+  "stop": "Detener",
+  "@stop": {
+    "description": "Botón para detener temporizador"
+  },
+  "complete": "Completar",
+  "@complete": {
+    "description": "Marcar tarea como completada"
+  },
+  "cancel": "Cancelar",
+  "@cancel": {
+    "description": "Botón cancelar"
+  },
+  "save": "Guardar",
+  "@save": {
+    "description": "Botón guardar"
+  },
+  "delete": "Eliminar",
+  "@delete": {
+    "description": "Botón eliminar"
+  },
+  "confirm": "Confirmar",
+  "@confirm": {
+    "description": "Botón confirmar"
+  },
+  "pomodoroMinutes": "{minutes} minutos",
+  "@pomodoroMinutes": {
+    "description": "Duración del pomodoro en minutos",
+    "placeholders": {
+      "minutes": {
+        "type": "int",
+        "example": "25"
+      }
+    }
+  },
+  "completedTasks": "Tareas Completadas: {count}",
+  "@completedTasks": {
+    "description": "Contador de tareas completadas",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "5"
+      }
+    }
+  },
+  "totalTime": "Tiempo Total: {hours}h {minutes}m",
+  "@totalTime": {
+    "description": "Tiempo total trabajado",
+    "placeholders": {
+      "hours": {
+        "type": "int",
+        "example": "2"
+      },
+      "minutes": {
+        "type": "int",
+        "example": "30"
+      }
+    }
+  },
+  "taskCompletedNotification": "¡Tarea completada!",
+  "@taskCompletedNotification": {
+    "description": "Notificación de tarea completada"
+  },
+  "pomodoroCompletedNotification": "¡Pomodoro completado! Tiempo de descanso.",
+  "@pomodoroCompletedNotification": {
+    "description": "Notificación de pomodoro completado"
+  },
+  "noTasksFound": "No hay tareas",
+  "@noTasksFound": {
+    "description": "Mensaje cuando no hay tareas"
+  },
+  "createFirstTask": "Crea tu primera tarea",
+  "@createFirstTask": {
+    "description": "Mensaje para crear primera tarea"
+  },
+  "deleteConfirmation": "¿Estás seguro de eliminar esta tarea?",
+  "@deleteConfirmation": {
+    "description": "Confirmación de eliminación"
+  },
+  "requiredField": "Este campo es requerido",
+  "@requiredField": {
+    "description": "Mensaje de validación para campos requeridos"
+  },
+  "invalidTime": "Tiempo inválido",
+  "@invalidTime": {
+    "description": "Mensaje de error para tiempo inválido"
+  },
+  "today": "Hoy",
+  "@today": {
+    "description": "Etiqueta para hoy"
+  },
+  "yesterday": "Ayer",
+  "@yesterday": {
+    "description": "Etiqueta para ayer"
+  },
+  "thisWeek": "Esta Semana",
+  "@thisWeek": {
+    "description": "Etiqueta para esta semana"
+  },
+  "thisMonth": "Este Mes",
+  "@thisMonth": {
+    "description": "Etiqueta para este mes"
+  },
+  "darkMode": "Modo Oscuro",
+  "@darkMode": {
+    "description": "Opción de modo oscuro"
+  },
+  "language": "Idioma",
+  "@language": {
+    "description": "Opción de idioma"
+  },
+  "notifications": "Notificaciones",
+  "@notifications": {
+    "description": "Configuración de notificaciones"
+  },
+  "vibration": "Vibración",
+  "@vibration": {
+    "description": "Configuración de vibración"
+  },
+  "about": "Acerca de",
+  "@about": {
+    "description": "Sección Acerca de"
+  }
+}

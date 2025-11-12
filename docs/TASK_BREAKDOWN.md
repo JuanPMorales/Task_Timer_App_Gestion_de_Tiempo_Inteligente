@@ -52,7 +52,7 @@ Las tareas con dependencias se marcan con `⚠️ Depende de: [ID]`
 | 1.1.7 | Configurar CI/CD inicial con GitHub Actions (lint + test básico) | ✅ Completada | 1.1.4 |
 | 1.1.8 | Definir y agregar dependencias iniciales en `pubspec.yaml` según MVP_TECNICO.md | ✅ Completada | 1.1.1 |
 | 1.1.9 | Configurar análisis estático de código (`flutter_lints`, `analysis_options.yaml`) | ✅ Completada | 1.1.8 |
-| 1.1.10 | Configurar internacionalización (`flutter_localizations`, `intl`) | ⏳ Pendiente | 1.1.8 |
+| 1.1.10 | Configurar internacionalización (`flutter_localizations`, `intl`) | ✅ Completada | 1.1.8 |
 
 **Nota:** Validar instalación ejecutando `flutter doctor -v` sin errores críticos.
 

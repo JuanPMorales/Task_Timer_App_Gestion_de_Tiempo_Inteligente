@@ -1,0 +1,197 @@
+{
+  "@@locale": "en",
+  "appTitle": "Task Timer",
+  "@appTitle": {
+    "description": "Application title"
+  },
+  "tasks": "Tasks",
+  "@tasks": {
+    "description": "Label for tasks section"
+  },
+  "timer": "Timer",
+  "@timer": {
+    "description": "Label for timer"
+  },
+  "statistics": "Statistics",
+  "@statistics": {
+    "description": "Label for statistics section"
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "Label for settings"
+  },
+  "createTask": "Create Task",
+  "@createTask": {
+    "description": "Button to create new task"
+  },
+  "editTask": "Edit Task",
+  "@editTask": {
+    "description": "Button to edit task"
+  },
+  "deleteTask": "Delete Task",
+  "@deleteTask": {
+    "description": "Button to delete task"
+  },
+  "taskTitle": "Title",
+  "@taskTitle": {
+    "description": "Task title field"
+  },
+  "taskDescription": "Description",
+  "@taskDescription": {
+    "description": "Task description field"
+  },
+  "taskEstimatedTime": "Estimated Time",
+  "@taskEstimatedTime": {
+    "description": "Estimated time to complete task"
+  },
+  "taskPriority": "Priority",
+  "@taskPriority": {
+    "description": "Task priority"
+  },
+  "priorityHigh": "High",
+  "@priorityHigh": {
+    "description": "High priority"
+  },
+  "priorityMedium": "Medium",
+  "@priorityMedium": {
+    "description": "Medium priority"
+  },
+  "priorityLow": "Low",
+  "@priorityLow": {
+    "description": "Low priority"
+  },
+  "start": "Start",
+  "@start": {
+    "description": "Button to start timer"
+  },
+  "pause": "Pause",
+  "@pause": {
+    "description": "Button to pause timer"
+  },
+  "resume": "Resume",
+  "@resume": {
+    "description": "Button to resume timer"
+  },
+  "stop": "Stop",
+  "@stop": {
+    "description": "Button to stop timer"
+  },
+  "complete": "Complete",
+  "@complete": {
+    "description": "Mark task as completed"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel button"
+  },
+  "save": "Save",
+  "@save": {
+    "description": "Save button"
+  },
+  "delete": "Delete",
+  "@delete": {
+    "description": "Delete button"
+  },
+  "confirm": "Confirm",
+  "@confirm": {
+    "description": "Confirm button"
+  },
+  "pomodoroMinutes": "{minutes} minutes",
+  "@pomodoroMinutes": {
+    "description": "Pomodoro duration in minutes",
+    "placeholders": {
+      "minutes": {
+        "type": "int",
+        "example": "25"
+      }
+    }
+  },
+  "completedTasks": "Completed Tasks: {count}",
+  "@completedTasks": {
+    "description": "Counter of completed tasks",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "5"
+      }
+    }
+  },
+  "totalTime": "Total Time: {hours}h {minutes}m",
+  "@totalTime": {
+    "description": "Total time worked",
+    "placeholders": {
+      "hours": {
+        "type": "int",
+        "example": "2"
+      },
+      "minutes": {
+        "type": "int",
+        "example": "30"
+      }
+    }
+  },
+  "taskCompletedNotification": "Task completed!",
+  "@taskCompletedNotification": {
+    "description": "Task completed notification"
+  },
+  "pomodoroCompletedNotification": "Pomodoro completed! Break time.",
+  "@pomodoroCompletedNotification": {
+    "description": "Pomodoro completed notification"
+  },
+  "noTasksFound": "No tasks found",
+  "@noTasksFound": {
+    "description": "Message when there are no tasks"
+  },
+  "createFirstTask": "Create your first task",
+  "@createFirstTask": {
+    "description": "Message to create first task"
+  },
+  "deleteConfirmation": "Are you sure you want to delete this task?",
+  "@deleteConfirmation": {
+    "description": "Delete confirmation"
+  },
+  "requiredField": "This field is required",
+  "@requiredField": {
+    "description": "Validation message for required fields"
+  },
+  "invalidTime": "Invalid time",
+  "@invalidTime": {
+    "description": "Error message for invalid time"
+  },
+  "today": "Today",
+  "@today": {
+    "description": "Label for today"
+  },
+  "yesterday": "Yesterday",
+  "@yesterday": {
+    "description": "Label for yesterday"
+  },
+  "thisWeek": "This Week",
+  "@thisWeek": {
+    "description": "Label for this week"
+  },
+  "thisMonth": "This Month",
+  "@thisMonth": {
+    "description": "Label for this month"
+  },
+  "darkMode": "Dark Mode",
+  "@darkMode": {
+    "description": "Dark mode option"
+  },
+  "language": "Language",
+  "@language": {
+    "description": "Language option"
+  },
+  "notifications": "Notifications",
+  "@notifications": {
+    "description": "Notifications settings"
+  },
+  "vibration": "Vibration",
+  "@vibration": {
+    "description": "Vibration settings"
+  },
+  "about": "About",
+  "@about": {
+    "description": "About section"
+  }
+}
