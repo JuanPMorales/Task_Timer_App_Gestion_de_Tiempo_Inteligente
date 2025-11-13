@@ -1727,9 +1727,29 @@ N/A
 
 ---
 
+## 🔗 Issues Relacionados
+
+<!-- Referencia a issues que este PR resuelve o está relacionado -->
+
+- Closes #
+- Fixes #
+- Related to #
+
+---
+
 ## ✅ Checklist
 
-<!-- Marca con 'x' cuando hayas completado cada item -->
+<!-- Marca con 'x' las opciones que apliquen -->
+
+- [ ] 🐛 Bug fix (cambio no-breaking que corrige un issue)
+- [ ] ✨ Nueva feature (cambio no-breaking que añade funcionalidad)
+- [ ] 💥 Breaking change (fix o feature que causa cambios incompatibles)
+- [ ] 📚 Documentación
+- [ ] 🎨 Estilo/Formateo
+- [ ] ♻️ Refactorización
+- [ ] ⚡ Mejora de performance
+- [ ] ✅ Tests
+- [ ] 🔧 Configuración/Build
 
 ### Código
 
