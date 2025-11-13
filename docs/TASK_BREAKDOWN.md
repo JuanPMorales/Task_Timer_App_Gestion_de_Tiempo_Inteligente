@@ -70,7 +70,7 @@ Las tareas con dependencias se marcan con `⚠️ Depende de: [ID]`
 | 2.1.4 | Crear `/presentation` con subcarpetas: `providers/`, `screens/`, `widgets/`, `viewmodels/` | ✅ Completada | 1.1.8 |
 | 2.1.5 | Crear `/services` para integraciones nativas: `volume/`, `vibration/`, `background/` | ✅ Completada | 1.1.8 |
 | 2.1.6 | Crear archivo `main.dart` como punto de entrada con estructura base | ✅ Completada | 2.1.1-2.1.5 |
-| 2.1.7 | Documentar arquitectura en `docs/ARCHITECTURE.md` con diagramas | ⏳ Pendiente | 2.1.6 |
+| 2.1.7 | Documentar arquitectura en `docs/ARCHITECTURE.md` con diagramas | ✅ Completada | 2.1.6 |
 
 **Principio:** Clean Architecture con separación clara de capas (domain → data → presentation).
 
