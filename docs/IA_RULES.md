@@ -1,7 +1,7 @@
 # 🤖 IA_RULES.md — Directrices para Agentes de Desarrollo IA
 
-**Versión:** 1.0  
-**Fecha:** 2025-11-11  
+**Versión:** 1.1  
+**Fecha:** 2025-11-13  
 **Autor:** JuanPMorales  
 **Propósito:** Definir reglas estrictas para IAs que generen, modifiquen o documenten código del proyecto Task Timer.
 
@@ -24,8 +24,9 @@
 13. [Manejo de Errores y Excepciones](#13-manejo-de-errores-y-excepciones)
 14. [Seguridad y Privacidad](#14-seguridad-y-privacidad)
 15. [Versionado y Commits](#15-versionado-y-commits)
-16. [Preguntas Frecuentes](#16-preguntas-frecuentes)
-17. [Mantenimiento](#17-mantenimiento)
+16. [Git Flow - Flujo de Ramas](#16-git-flow---flujo-de-ramas)
+17. [Preguntas Frecuentes](#17-preguntas-frecuentes)
+18. [Mantenimiento](#18-mantenimiento)
 
 ---
 
@@ -972,7 +973,7 @@ final example = 'code';
 | Valor 1   | Valor 2   |
 ```
 
-### 11.3 Diagramas Mermaid
+### 11.3 Diagramos Mermaid
 
 ```markdown
 ```mermaid
@@ -1715,213 +1716,192 @@ develop → main (via PR reviewed)
 
 ---
 
-## 16. Preguntas Frecuentes
+## 16. Git Flow - Flujo de Ramas
 
-### Q1: ¿Puedo usar `print()` para debugging?
+### 16.1 Modelo Git Flow Completo
 
-**R:** ❌ **NO.** Usa `Logger` de `lib/core/utils/logger.dart`.
+**REGLA CRÍTICA:** Este proyecto sigue **Git Flow estricto**. La IA debe respetar este flujo en todos los commits y merges.
 
-```dart
-// ❌ MAL
-print('Task created: $taskId');
+```
+┌─────────┐
+│  main   │ ← Producción (solo releases)
+└────┬────┘
+     │ ↑ merge release/*
+     │ ↑ merge hotfix/*
+     ↓ │
+┌────┴────┐
+│ release │ ← Preparar releases
+└────┬────┘
+     │ ↑ merge develop (cuando listo)
+     ↓ │
+┌────┴────────┐
+│  develop    │ ← Desarrollo principal
+└────┬────────┘
+     │ ↑ merge feature/*
+     ↓ │
+┌────┴─────────┐
+│  feature/*   │ ← Features individuales
+└──────────────┘
 
-// ✅ BIEN
-Logger.i('Task created: $taskId');
+┌─────────┐
+│ hotfix  │ ← Fixes urgentes desde main
+└────┬────┘
+     ↓
+  main + develop
 ```
 
-### Q2: ¿Cuándo usar `const` vs `final`?
+### 16.2 Ramas Permanentes
 
-**R:**
-- `const`: Valores conocidos en compile-time
-- `final`: Valores conocidos en runtime pero inmutables
+| Rama | Propósito | Protección | Merge desde |
+|------|-----------|------------|-------------|
+| `main` | Código en producción | ✅ Protegida (PR obligatorio) | `release/*`, `hotfix/*` |
+| `develop` | Desarrollo activo | ⚠️ Semi-protegida | `feature/*` |
 
-```dart
-// ✅ const (compile-time)
-const maxLength = 50;
-const defaultColor = '#3BCDFE';
+### 16.3 Ramas Temporales
 
-// ✅ final (runtime)
-final now = DateTime.now();
-final uuid = Uuid().v4();
-```
+| Rama | Propósito | Merge a | Eliminar después |
+|------|-----------|---------|------------------|
+| `feature/*` | Nueva funcionalidad | `develop` | ✅ Sí |
+| `release/*` | Preparar release | `main` + `develop` | ✅ Sí |
+| `hotfix/*` | Fix urgente producción | `main` + `develop` | ✅ Sí |
 
-### Q3: ¿Debo usar `async`/`await` siempre?
+### 16.4 Flujo de Feature (OBLIGATORIO)
 
-**R:** ❌ **NO.** Solo si hay operaciones asíncronas.
-
-```dart
-// ❌ MAL: async innecesario
-Future<int> calculate() async {
-  return 2 + 2; // ← Operación síncrona
-}
-
-// ✅ BIEN: sin async
-int calculate() {
-  return 2 + 2;
-}
-
-// ✅ BIEN: async necesario
-Future<List<Task>> getTasks() async {
-  final db = await _db.database; // ← Operación asíncrona
-  final maps = await db.query('tasks');
-  return maps.map((m) => TaskModel.fromMap(m).toEntity()).toList();
-}
-```
-
-### Q4: ¿Cómo nombro variables booleanas?
-
-**R:** Usar prefijos `is`, `has`, `can`, `should`.
-
-```dart
-// ✅ BIEN
-final isArchived = true;
-final hasError = false;
-final canStart = true;
-final shouldVibrate = false;
-
-// ❌ MAL
-final archived = true;     // ❌ No es claro que es boolean
-final error = false;       // ❌ Parece nullable
-```
-
-### Q5: ¿Puedo modificar `pubspec.yaml`?
-
-**R:** ⚠️ **Solo comentarios.** Para agregar dependencias, crear issue.
-
-```yaml
-# ✅ BIEN: Agregar comentario
-dependencies:
-  flutter:
-    sdk: flutter
-  # State management
-  flutter_riverpod: ^2.4.10
-
-# ❌ MAL: Agregar dependencia sin aprobación
-dependencies:
-  get_it: ^7.6.0  # ❌
-```
-
-### Q6: ¿Qué hacer si `flutter analyze` falla?
-
-**R:** Corregir todos los errores antes de generar output.
+**Cada tarea del TASK_BREAKDOWN.md sigue este flujo:**
 
 ```bash
-# Ejecutar análisis
+# 1. Crear feature desde develop
+git checkout develop
+git pull origin develop
+git checkout -b feature/nombre-descriptivo
+
+# 2. Implementar tarea completa
+# [Código + tests + documentación]
+
+# 3. Validar
 flutter analyze
+flutter test
+flutter format .
 
-# Si hay errores, corregirlos y re-analizar
-flutter analyze
+# 4. Commit (Conventional Commits)
+git add .
+git commit -m "feat(scope): description
 
-# Output esperado:
-# No issues found! (ran in 2.3s)
+Body
+
+Refs: TASK_BREAKDOWN.md#X.X.X"
+
+# 5. Push feature
+git push -u origin feature/nombre-descriptivo
+
+# 6. Crear PR: feature/* → develop
+# En GitHub UI o:
+gh pr create --base develop --head feature/nombre-descriptivo \
+  --title "feat(scope): description" \
+  --body "Completa tarea X.X.X del TASK_BREAKDOWN.md"
+
+# 7. Después de merge, actualizar local
+git checkout develop
+git pull origin develop
+git branch -d feature/nombre-descriptivo
 ```
 
-### Q7: ¿Cómo manejo nullable types?
+### 16.5 Flujo de Release (Para Versiones)
 
-**R:** Ser explícito con `?` y manejar nulls correctamente.
+**Cuando develop está listo para producción:**
 
-```dart
-// ✅ BIEN: Nullable explícito
-String? getName() {
-  return _name;
-}
+```bash
+# 1. Crear release desde develop
+git checkout develop
+git pull origin develop
+git checkout -b release/v1.0.0
 
-// Verificar null antes de usar
-final name = getName();
-if (name != null) {
-  print(name.toUpperCase()); // Safe
-}
+# 2. Preparar release
+# - Actualizar version en pubspec.yaml
+# - Actualizar CHANGELOG.md
+# - Finalizar documentación
+# - Tests exhaustivos
 
-// O usar operador ??
-final displayName = getName() ?? 'Sin nombre';
+# 3. Commit de preparación
+git commit -m "chore(release): prepare v1.0.0
 
-// ❌ MAL: Forzar no-null sin verificar
-final name = getName();
-print(name!.toUpperCase()); // ❌ Puede crashear
+- Update version to 1.0.0 in pubspec.yaml
+- Update CHANGELOG.md with release notes
+- Final documentation review"
+
+# 4. Push release
+git push -u origin release/v1.0.0
+
+# 5. Crear PR: release/v1.0.0 → main
+gh pr create --base main --head release/v1.0.0 \
+  --title "chore(release): v1.0.0" \
+  --body "Release v1.0.0 ready for production"
+
+# 6. Después de merge a main:
+git checkout main
+git pull origin main
+git tag -a v1.0.0 -m "Release v1.0.0"
+git push origin v1.0.0
+
+# 7. Mergear también a develop (para sincronizar)
+git checkout develop
+git merge main
+git push origin develop
+
+# 8. Eliminar rama release
+git branch -d release/v1.0.0
+git push origin --delete release/v1.0.0
 ```
 
-### Q8: ¿Debo crear archivo nuevo o modificar existente?
+### 16.6 Flujo de Hotfix (Fixes Urgentes)
 
-**R:** Seguir esta lógica:
+**Solo para bugs críticos en producción:**
 
+```bash
+# 1. Crear hotfix desde main
+git checkout main
+git pull origin main
+git checkout -b hotfix/fix-critical-bug
+
+# 2. Implementar fix mínimo
+# [Solo el fix necesario, sin features nuevas]
+
+# 3. Commit
+git commit -m "fix(critical): resolve crash on startup
+
+Fixes #123"
+
+# 4. Push hotfix
+git push -u origin hotfix/fix-critical-bug
+
+# 5. Crear PR: hotfix/* → main
+gh pr create --base main --head hotfix/fix-critical-bug \
+  --title "fix(critical): resolve crash on startup" \
+  --body "Urgent fix for production crash. Fixes #123"
+
+# 6. Después de merge a main:
+git checkout main
+git pull origin main
+git tag -a v1.0.1 -m "Hotfix v1.0.1"
+git push origin v1.0.1
+
+# 7. Mergear también a develop
+git checkout develop
+git merge main
+git push origin develop
+
+# 8. Eliminar rama hotfix
+git branch -d hotfix/fix-critical-bug
+git push origin --delete hotfix/fix-critical-bug
 ```
-¿El módulo ya existe?
-├─ Sí → Modificar existente (cambios mínimos)
-└─ No → Crear nuevo archivo
-```
 
----
+### 16.7 Reglas Estrictas Git Flow
 
-## 17. Mantenimiento
+#### ✅ PERMITIDO
 
-### 17.1 Actualización de este Documento
-
-**Este archivo debe actualizarse cuando:**
-
-- ✅ Se modifica `ARCHITECTURE.md`
-- ✅ Se modifica `PRD.md` o `MVP_TECNICO.md`
-- ✅ Se agregan nuevas reglas de estilo
-- ✅ Se identifican patrones recurrentes de errores
-- ✅ Se agregan nuevas dependencias aprobadas
-
-### 17.2 Historial de Cambios
-
-| Fecha | Versión | Cambios |
-|-------|---------|---------|
-| 2025-11-11 | 1.0 | Creación inicial del documento |
-
-### 17.3 Responsables
-
-| Rol | Nombre | Responsabilidad |
-|-----|--------|-----------------|
-| **Product Owner** | JuanPMorales | Aprobar cambios en reglas de negocio |
-| **Tech Lead** | JuanPMorales | Aprobar cambios en reglas técnicas |
-| **QA Lead** | JuanPMorales | Validar reglas de testing |
-
-### 17.4 Revisión Periódica
-
-**Calendario de revisión:**
-- **Sprint 2:** Validar reglas de DB y testing
-- **Sprint 4:** Validar reglas de servicios nativos
-- **Sprint 6 (Pre-release):** Revisión completa
-
----
-
-## 📌 Resumen Ejecutivo
-
-### ✅ DO (Hacer)
-
-1. ✅ Leer `ARCHITECTURE.md`, `MVP_TECNICO.md`, `PRD.md` antes de generar código
-2. ✅ Seguir Clean Architecture (domain/data/presentation)
-3. ✅ Usar Riverpod para gestión de estado
-4. ✅ Documentar todas las clases públicas
-5. ✅ Escribir tests (cobertura ≥70%)
-6. ✅ Usar `Logger` en lugar de `print()`
-7. ✅ Validar input del usuario
-8. ✅ Manejar errores con try-catch y excepciones tipadas
-9. ✅ Usar placeholders en queries SQL
-10. ✅ Formatear código con `flutter format`
-
-### ❌ DON'T (No Hacer)
-
-1. ❌ No agregar dependencias sin aprobación
-2. ❌ No usar `provider`, `bloc`, o `get_it`
-3. ❌ No hardcodear datos sensibles
-4. ❌ No usar concatenación de strings en SQL
-5. ❌ No modificar `README.md`, `LICENSE`, o workflows sin aprobación
-6. ❌ No generar funcionalidades fuera del alcance del MVP
-7. ❌ No usar `print()` para logging
-8. ❌ No reescribir código completo (cambios mínimos)
-9. ❌ No silenciar errores con catch vacíos
-10. ❌ No mezclar lógica de negocio en UI
-
----
-
-**🚀 Última actualización:** 2025-11-11 18:45:24 UTC  
-**📧 Contacto:** JuanPMorales  
-**📝 Versión:** 1.0  
-
----
-
-_Este documento es la **fuente de verdad** para todas las IAs que trabajen en Task Timer._  
-_Cualquier código generado que no cumpla estas reglas debe ser rechazado._
+```bash
+# ✅ Feature → develop
+git checkout -b feature/nueva-funcionalidad
+# [trabajo...]
+git push origin feature/nueva-funcionalidad
+# PR:
