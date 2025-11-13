@@ -1,30 +1,23 @@
-// This is a basic Flutter widget test.
+// Widget test básico para Task Timer App
 //
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
+// Este test verifica que la aplicación se construya correctamente.
+// Los tests funcionales específicos se agregarán en sprints posteriores.
 
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:task_timer/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('App builds successfully', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(const TaskTimerApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Verify that the app title is displayed (puede aparecer en appbar y en body)
+    expect(find.text('Task Timer'), findsWidgets);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // Verify that the placeholder screen is displayed
+    expect(find.text('Arquitectura base configurada'), findsOneWidget);
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Verify version is displayed
+    expect(find.textContaining('v1.0.0'), findsOneWidget);
   });
 }
