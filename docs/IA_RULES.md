@@ -1230,6 +1230,308 @@ feat(usecases): agregar UpdateTaskUseCase
 ```
 ```
 
+### 15.3 Workflow Profesional - Feature Branch por Tarea
+
+**REGLA CRÍTICA:** Cada tarea del TASK_BREAKDOWN.md debe completarse en una rama `feature/*` independiente siguiendo [Conventional Commits v1.0.0](https://www.conventionalcommits.org/en/v1.0.0/).
+
+#### 15.3.1 Flujo Completo (Una Tarea a la Vez)
+
+```bash
+# === PASO 1: Preparar rama feature ===
+git checkout develop
+git pull origin develop
+git checkout -b feature/<nombre-descriptivo-tarea>
+
+# Ejemplo para tarea 2.1.7:
+git checkout -b feature/documentar-arquitectura
+
+# === PASO 2: Implementar UNA SOLA tarea ===
+# - Escribir código según especificaciones
+# - Seguir principios de Clean Architecture
+# - Documentar con DartDoc
+# - Respetar convenciones de naming
+
+# === PASO 3: Validar código ===
+flutter analyze                    # Debe retornar 0 errores
+flutter test                       # Todos los tests deben pasar
+flutter format lib/ test/          # Formatear código
+
+# === PASO 4: Crear documentación de progreso ===
+# Crear archivo: docs/progress/<id>_<nombre>.md
+# Ejemplo: docs/progress/2.1.7_documentar_arquitectura.md
+# Incluir:
+# - Resumen de lo implementado
+# - Archivos creados/modificados
+# - Decisiones técnicas
+# - Validaciones realizadas
+# - Próximos pasos
+
+# === PASO 5: Actualizar TASK_BREAKDOWN.md ===
+# Cambiar estado de tarea a: ✅ Completada
+
+# === PASO 6: Commit con Conventional Commits ===
+git add .
+git commit -m "feat(core): document Clean Architecture design
+
+Completa tarea 2.1.7 del TASK_BREAKDOWN.md
+
+- Agrega diagramas de capas (Domain, Data, Presentation)
+- Documenta flujo de datos con Riverpod
+- Incluye ejemplos de dependencias entre capas
+- Actualiza ARCHITECTURE.md con secciones completas
+
+Refs: TASK_BREAKDOWN.md#2.1.7"
+
+# === PASO 7: Push a feature branch ===
+git push -u origin feature/documentar-arquitectura
+
+# === PASO 8: Crear Pull Request ===
+# En GitHub:
+# - Base: develop
+# - Compare: feature/documentar-arquitectura
+# - Título: "feat(core): document Clean Architecture design"
+# - Descripción: Copiar cuerpo del commit
+# - Labels: documentation, task-2.1.7
+# - Assignee: Desarrollador
+
+# === PASO 9: Code Review y Merge ===
+# - CI/CD debe pasar (tests, lint)
+# - Revisión de código (opcional si es individual)
+# - Mergear con "Squash and merge"
+# - Eliminar rama feature después de merge
+
+# === PASO 10: Actualizar local y siguiente tarea ===
+git checkout develop
+git pull origin develop
+# Repetir desde PASO 1 para la siguiente tarea
+```
+
+#### 15.3.2 Naming de Feature Branches
+
+**Formato:** `feature/<nombre-kebab-case>`
+
+```bash
+# ✅ BIEN - Descriptivos y concisos
+feature/task-creation-modal
+feature/timer-background-service
+feature/volume-button-control
+feature/documentar-arquitectura
+feature/configure-riverpod
+
+# ❌ MAL - Demasiado genéricos o incorrectos
+feature/new-stuff              # ❌ Vago
+feature_timer                  # ❌ Guion bajo
+FEATURE/timer                  # ❌ Mayúsculas
+timer-feature                  # ❌ Orden invertido
+feature/2.1.7                  # ❌ Solo número de tarea
+```
+
+#### 15.3.3 Formato de Commit con Conventional Commits
+
+**Especificación:** [conventionalcommits.org/en/v1.0.0](https://www.conventionalcommits.org/en/v1.0.0/)
+
+```
+<type>(<scope>): <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+**Tipos obligatorios:**
+
+| Tipo | Uso | Ejemplo |
+|------|-----|---------|
+| `feat` | Nueva funcionalidad | `feat(task): add creation modal` |
+| `fix` | Corrección de bug | `fix(timer): resolve pause race condition` |
+| `docs` | Solo documentación | `docs(architecture): add diagrams` |
+| `style` | Formato (sin cambio lógica) | `style(task): format code with dartfmt` |
+| `refactor` | Refactor (sin cambio comportamiento) | `refactor(db): simplify query builder` |
+| `test` | Tests | `test(timer): add unit tests for pause` |
+| `chore` | Mantenimiento | `chore(deps): update riverpod to 2.5.0` |
+| `perf` | Performance | `perf(db): add index on created_at` |
+| `ci` | CI/CD | `ci(github): add flutter analyze step` |
+| `build` | Build system | `build(gradle): update Android SDK` |
+
+**Breaking Changes:**
+
+```bash
+# Con !
+feat(api)!: change Task.duration to int
+
+BREAKING CHANGE: Task.duration now expects seconds as int instead of String
+
+# Migración:
+# Antes: Task(duration: "30:00")
+# Ahora: Task(durationSeconds: 1800)
+```
+
+**Ejemplos completos:**
+
+```bash
+# Feature con scope y descripción
+feat(task): add name validation in creation modal
+
+Validates task name with following rules:
+- Minimum 1 character
+- Maximum 50 characters
+- No leading/trailing whitespace
+- Only alphanumeric and spaces allowed
+
+Refs: TASK_BREAKDOWN.md#3.1.6
+
+# Fix con issue reference
+fix(timer): prevent negative elapsed time on clock change
+
+The timer could show negative values when system clock changed
+(airplane mode, timezone switch). Now using Stopwatch for
+monotonic time measurement.
+
+Fixes #42
+
+# Documentación
+docs(progress): complete task 2.1.7 documentation
+
+Adds comprehensive architecture documentation including:
+- Clean Architecture layer diagrams
+- Data flow examples with Riverpod
+- Dependency injection patterns
+- Testing strategies per layer
+
+# Múltiples tipos en un commit (NO RECOMENDADO - dividir)
+# ❌ MAL
+feat(task): add modal and fix validation bug
+
+# ✅ BIEN (2 commits separados)
+feat(task): add creation modal
+fix(task): validate name length correctly
+```
+
+#### 15.3.4 Commits Atómicos
+
+**REGLA:** Un commit = Un cambio lógico coherente.
+
+```bash
+# ✅ BIEN - Commits atómicos
+git commit -m "feat(task): add Task entity"
+git commit -m "feat(task): add TaskModel for SQLite"
+git commit -m "feat(task): implement TaskRepository interface"
+git commit -m "test(task): add unit tests for TaskRepository"
+
+# ❌ MAL - Commit gigante
+git commit -m "feat(task): complete task module
+
+- Add entity
+- Add model
+- Add repository
+- Add use cases
+- Add tests
+- Add UI"  # ← Demasiado grande, dividir en 6+ commits
+```
+
+#### 15.3.5 Documentación por Tarea
+
+**Archivo obligatorio:** `docs/progress/<id>_<nombre>.md`
+
+**Template:**
+
+```markdown
+# <ID> - <Nombre de Tarea>
+
+**Estado:** ✅ Completada  
+**Fecha:** YYYY-MM-DD  
+**Rama:** feature/<nombre>  
+**Commit:** <hash>
+
+---
+
+## 📋 Resumen
+
+Breve descripción de lo implementado (2-3 líneas).
+
+---
+
+## ✅ Tareas Completadas
+
+- [x] Subtarea 1
+- [x] Subtarea 2
+- [x] Subtarea 3
+
+---
+
+## 📁 Archivos Creados
+
+- `lib/path/file1.dart` - Descripción
+- `test/path/file1_test.dart` - Tests unitarios
+
+---
+
+## 🔧 Archivos Modificados
+
+- `lib/core/providers.dart` - Agregado provider X
+- `docs/TASK_BREAKDOWN.md` - Actualizado estado
+
+---
+
+## 🧪 Validaciones
+
+```bash
+flutter analyze  # ✅ 0 issues
+flutter test     # ✅ 15/15 tests passed
+```
+
+---
+
+## 📝 Decisiones Técnicas
+
+- **Decisión 1:** Razón
+- **Decisión 2:** Razón
+
+---
+
+## 🔗 Referencias
+
+- TASK_BREAKDOWN.md#<id>
+- Conventional Commits: https://www.conventionalcommits.org/
+- Commits: <hash>
+
+---
+
+## ➡️ Próximos Pasos
+
+- Tarea <id+1>: <nombre>
+```
+
+#### 15.3.6 Actualización de TASK_BREAKDOWN.md
+
+Después de cada tarea:
+
+```markdown
+| 2.1.7 | Documentar arquitectura en docs/ARCHITECTURE.md | ✅ Completada | 2.1.6 |
+```
+
+Commit:
+
+```bash
+git add docs/TASK_BREAKDOWN.md
+git commit -m "docs(breakdown): mark task 2.1.7 as completed"
+```
+
+#### 15.3.7 Protección de Ramas
+
+**Configuración de GitHub:**
+
+- `main`: Requiere PR + CI pass (no push directo)
+- `develop`: Acepta push directo o PR
+- `feature/*`: Push directo permitido
+
+**Flujo de merge:**
+
+```
+feature/xyz → develop (via PR o push)
+develop → main (via PR reviewed)
+```
+
 ---
 
 ## 16. Preguntas Frecuentes
