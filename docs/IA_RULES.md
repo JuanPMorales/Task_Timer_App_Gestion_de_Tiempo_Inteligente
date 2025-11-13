@@ -668,23 +668,36 @@ class TaskRepositoryImpl implements TaskRepository {
 
 **REGLA CR√çTICA:** Despu√©s de completar cada tarea del TASK_BREAKDOWN.md, la IA **DEBE** realizar commits siguiendo el workflow de Git profesional.
 
+**üö® IMPORTANTE - NUNCA OLVIDAR:**
+1. ‚úÖ **CADA TAREA = UNA RAMA FEATURE/** - Sin excepci√≥n
+2. ‚úÖ **SIEMPRE crear archivo `docs/progress/<id>_<nombre>.md`** con checklist completo
+3. ‚úÖ **NUNCA commitear directamente a `develop`** sin rama feature
+4. ‚úÖ **SIEMPRE validar con `flutter analyze`** antes de commit
+
 #### 9.6.1 Flujo Obligatorio por Tarea
 
 ```bash
-# === PASO 1: Crear rama feature (si no existe) ===
+# === PASO 1: Crear rama feature (OBLIGATORIO - NO OMITIR) ===
 git checkout develop
 git pull origin develop
 git checkout -b feature/<nombre-descriptivo>
 
+# Verificar que est√°s en la rama correcta
+git branch  # Debe mostrar * feature/<nombre>
+
 # === PASO 2: Implementar la tarea ===
 # [C√≥digo generado por la IA]
 
-# === PASO 3: Validar c√≥digo ===
+# === PASO 3: Validar c√≥digo (OBLIGATORIO) ===
 flutter analyze    # Debe pasar sin errores
-flutter test       # Todos los tests deben pasar
-flutter format .   # Formatear c√≥digo
+flutter test       # Todos los tests deben pasar (si hay tests)
+dart format .      # Formatear c√≥digo
 
-# === PASO 4: Hacer commit con Conventional Commits ===
+# === PASO 4: Crear documentaci√≥n (OBLIGATORIO) ===
+# Crear docs/progress/<id>_<nombre>.md con checklist completo
+# Actualizar docs/TASK_BREAKDOWN.md (marcar tarea como completada)
+
+# === PASO 5: Hacer commit con Conventional Commits ===
 git add .
 git commit -m "<type>(<scope>): <description>
 
@@ -692,8 +705,11 @@ git commit -m "<type>(<scope>): <description>
 
 Refs: TASK_BREAKDOWN.md#<id-tarea>"
 
-# === PASO 5: Push a la rama feature ===
+# === PASO 6: Push a la rama feature ===
 git push -u origin feature/<nombre-descriptivo>
+
+# === PASO 7: Informar al usuario ===
+# Mostrar mensaje con instrucciones para crear PR o mergear
 ```
 
 #### 9.6.2 Cu√°ndo Hacer Commits
@@ -1615,6 +1631,8 @@ git commit -m "feat(task): complete task module
 
 **Archivo obligatorio:** `docs/progress/<id>_<nombre>.md`
 
+**‚ö†Ô∏è CR√çTICO:** La IA **DEBE** crear este archivo para cada tarea completada sin excepci√≥n.
+
 **Template:**
 
 ```markdown
@@ -1630,6 +1648,44 @@ git commit -m "feat(task): complete task module
 ## üìã Resumen
 
 Breve descripci√≥n de lo implementado (2-3 l√≠neas).
+
+---
+
+## ‚úÖ Checklist de Validaci√≥n
+
+### Implementaci√≥n
+- [ ] C√≥digo implementado seg√∫n especificaciones del TASK_BREAKDOWN.md
+- [ ] Arquitectura Clean respetada (capas correctas)
+- [ ] Convenciones de naming seguidas (snake_case archivos, PascalCase clases)
+- [ ] Documentaci√≥n DartDoc completa en clases/m√©todos p√∫blicos
+- [ ] TODOs documentados con formato correcto `TODO(sprint-x):`
+
+### Git Flow
+- [ ] ‚úÖ **Rama feature/* creada para esta tarea**
+- [ ] Rama nombrada correctamente: `feature/<nombre-kebab-case>`
+- [ ] Commits siguen Conventional Commits
+- [ ] Commits at√≥micos (1 cambio l√≥gico por commit)
+- [ ] Branch pusheado a origin
+
+### Calidad de C√≥digo
+- [ ] `flutter analyze` pasa sin errores
+- [ ] `flutter test` pasa (si hay tests)
+- [ ] `dart format` aplicado
+- [ ] Sin warnings nuevos introducidos
+- [ ] C√≥digo revisado (self-review)
+
+### Documentaci√≥n
+- [ ] TASK_BREAKDOWN.md actualizado (estado ‚Üí ‚úÖ Completada)
+- [ ] Archivo de progreso creado: `docs/progress/<id>_<nombre>.md`
+- [ ] Decisiones t√©cnicas documentadas
+- [ ] README actualizado (si aplica)
+- [ ] CHANGELOG actualizado (si aplica)
+
+### Testing
+- [ ] Unit tests escritos (si aplica)
+- [ ] Widget tests escritos (si aplica)
+- [ ] Tests pasan localmente
+- [ ] Cobertura ‚â• 70% en c√≥digo nuevo
 
 ---
 
@@ -1660,6 +1716,7 @@ Breve descripci√≥n de lo implementado (2-3 l√≠neas).
 ```bash
 flutter analyze  # ‚úÖ 0 issues
 flutter test     # ‚úÖ 15/15 tests passed
+dart format .    # ‚úÖ 0 changed
 ```
 
 ---
@@ -1675,6 +1732,7 @@ flutter test     # ‚úÖ 15/15 tests passed
 
 - TASK_BREAKDOWN.md#<id>
 - Conventional Commits: https://www.conventionalcommits.org/
+- Rama: feature/<nombre>
 - Commits: <hash>
 
 ---
@@ -1682,6 +1740,7 @@ flutter test     # ‚úÖ 15/15 tests passed
 ## ‚û°Ô∏è Pr√≥ximos Pasos
 
 - Tarea <id+1>: <nombre>
+- Mergear feature branch a develop (si a√∫n no se hizo)
 ```
 
 #### 15.3.6 Actualizaci√≥n de TASK_BREAKDOWN.md
@@ -1905,3 +1964,171 @@ git checkout -b feature/nueva-funcionalidad
 # [trabajo...]
 git push origin feature/nueva-funcionalidad
 # PR:
+---
+
+##  RECORDATORIOS CRÕTICOS PARA LA IA
+
+###  NUNCA OLVIDAR
+
+Esta secciÛn contiene los errores m·s comunes que la IA **NUNCA** debe cometer.
+
+#### 1.  CADA TAREA = UNA RAMA FEATURE
+
+**OBLIGATORIO:**
+```bash
+# SIEMPRE hacer esto ANTES de empezar cualquier tarea
+git checkout develop
+git pull origin develop
+git checkout -b feature/<nombre-descriptivo>
+
+# Verificar que est·s en la rama correcta
+git branch  # Debe mostrar * feature/<nombre>
+```
+
+** PROHIBIDO:**
+- Commitear directamente a `develop` sin rama feature
+- Omitir la creaciÛn de rama feature
+- Usar nombre genÈrico como `feature/changes` o `feature/updates`
+
+#### 2.  SIEMPRE CREAR docs/progress/<id>_<nombre>.md
+
+**OBLIGATORIO:** Cada tarea debe tener su archivo de progreso con **checklist completo**.
+
+**El checklist DEBE incluir:**
+`markdown
+##  Checklist de ValidaciÛn
+
+### ImplementaciÛn
+- [ ] CÛdigo implementado seg˙n especificaciones
+- [ ] Arquitectura Clean respetada
+- [ ] Convenciones de naming seguidas
+- [ ] DocumentaciÛn DartDoc completa
+- [ ] TODOs documentados correctamente
+
+### Git Flow
+- [ ]  **Rama feature/* creada para esta tarea**
+- [ ] Rama nombrada correctamente
+- [ ] Commits siguen Conventional Commits
+- [ ] Commits atÛmicos
+- [ ] Branch pusheado a origin
+
+### Calidad de CÛdigo
+- [ ] `flutter analyze` pasa sin errores
+- [ ] `flutter test` pasa (si hay tests)
+- [ ] `dart format` aplicado
+- [ ] Sin warnings nuevos
+- [ ] CÛdigo revisado
+
+### DocumentaciÛn
+- [ ] TASK_BREAKDOWN.md actualizado
+- [ ] Archivo de progreso creado
+- [ ] Decisiones tÈcnicas documentadas
+
+### Testing
+- [ ] Unit tests escritos (si aplica)
+- [ ] Tests pasan localmente
+`
+
+** PROHIBIDO:**
+- Omitir archivo de progreso
+- Crear archivo sin checklist
+- Marcar items del checklist sin verificar
+
+#### 3.  VALIDAR ANTES DE COMMIT
+
+**OBLIGATORIO ejecutar:**
+```bash
+flutter analyze    #  Debe retornar "No issues found!"
+dart format .      #  Formatear cÛdigo
+flutter test       #  Si hay tests, deben pasar
+```
+
+** PROHIBIDO:**
+- Commitear con errores de an·lisis
+- Commitear cÛdigo sin formatear
+- Commitear con tests fallando
+
+#### 4.  ACTUALIZAR TASK_BREAKDOWN.md
+
+**OBLIGATORIO:** Cambiar estado de tarea a ` Completada`
+
+```markdown
+| 2.2.X | DescripciÛn |  Completada | Dependencias |
+```
+
+#### 5.  MENSAJE AL USUARIO
+
+**OBLIGATORIO:** DespuÈs de cada tarea, mostrar:
+
+```markdown
+##  Tarea X.X.X Completada Exitosamente
+
+###  Resumen
+[DescripciÛn breve]
+
+###  Git Workflow Ejecutado
+`ash
+ Rama: feature/<nombre>
+ An·lisis: No issues found!
+ Commit: <hash>
+ Push: origin/feature/<nombre>
+`
+
+###  PrÛximos Pasos
+1. Crear PR: feature/<nombre>  develop
+2. Revisar cambios
+3. Mergear a develop
+4. Continuar con siguiente tarea
+```
+
+---
+
+##  Checklist Pre-Tarea (Ejecutar SIEMPRE)
+
+Antes de empezar cualquier tarea, la IA debe verificar:
+
+- [ ] øEstoy en rama `develop` actualizada?
+- [ ] øHe creado rama `feature/<nombre>` para esta tarea?
+- [ ] øHe leÌdo TASK_BREAKDOWN.md para esta tarea?
+- [ ] øHe verificado dependencias de la tarea?
+- [ ] øTengo claro quÈ archivos crear/modificar?
+
+---
+
+##  Checklist Post-Tarea (Ejecutar SIEMPRE)
+
+DespuÈs de completar cualquier tarea, la IA debe verificar:
+
+- [ ] øEjecutÈ `flutter analyze` sin errores?
+- [ ] øEjecutÈ `dart format .`?
+- [ ] øActualicÈ TASK_BREAKDOWN.md?
+- [ ] øCreÈ `docs/progress/<id>_<nombre>.md` con checklist?
+- [ ] øHice commit con Conventional Commits?
+- [ ] øPusheÈ a `origin/feature/<nombre>`?
+- [ ] øInformÈ al usuario con mensaje completo?
+
+---
+
+##  Flujo Resumido (Memorizar)
+
+```
+1. git checkout -b feature/<nombre>   CREAR RAMA
+2. [Implementar cÛdigo]
+3. flutter analyze                    VALIDAR
+4. dart format .                      FORMATEAR
+5. Crear docs/progress/<id>.md        DOCUMENTAR CON CHECKLIST
+6. Actualizar TASK_BREAKDOWN.md       MARCAR COMPLETADA
+7. git add . && git commit            COMMIT
+8. git push origin feature/<nombre>   PUSH
+9. Informar usuario                   MENSAJE
+```
+
+---
+
+** ⁄ltima actualizaciÛn:** 2025-11-13 (VersiÛn 1.2)  
+** Contacto:** JuanPMorales  
+
+---
+
+_Este documento es la **fuente de verdad** para todas las IAs que trabajen en Task Timer._  
+_Cualquier cÛdigo generado que no cumpla estas reglas debe ser rechazado._
