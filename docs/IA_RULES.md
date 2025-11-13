@@ -1651,49 +1651,140 @@ Breve descripciÃ³n de lo implementado (2-3 lÃ­neas).
 
 ---
 
-## âœ… Checklist de ValidaciÃ³n
+## ğŸ“ DescripciÃ³n
 
-### ImplementaciÃ³n
-- [ ] CÃ³digo implementado segÃºn especificaciones del TASK_BREAKDOWN.md
-- [ ] Arquitectura Clean respetada (capas correctas)
-- [ ] Convenciones de naming seguidas (snake_case archivos, PascalCase clases)
-- [ ] DocumentaciÃ³n DartDoc completa en clases/mÃ©todos pÃºblicos
-- [ ] TODOs documentados con formato correcto `TODO(sprint-x):`
+<!-- Proporciona una descripciÃ³n clara y concisa de los cambios -->
 
-### Git Flow
-- [ ] âœ… **Rama feature/* creada para esta tarea**
-- [ ] Rama nombrada correctamente: `feature/<nombre-kebab-case>`
-- [ ] Commits siguen Conventional Commits
-- [ ] Commits atÃ³micos (1 cambio lÃ³gico por commit)
-- [ ] Branch pusheado a origin
-
-### Calidad de CÃ³digo
-- [ ] `flutter analyze` pasa sin errores
-- [ ] `flutter test` pasa (si hay tests)
-- [ ] `dart format` aplicado
-- [ ] Sin warnings nuevos introducidos
-- [ ] CÃ³digo revisado (self-review)
-
-### DocumentaciÃ³n
-- [ ] TASK_BREAKDOWN.md actualizado (estado â†’ âœ… Completada)
-- [ ] Archivo de progreso creado: `docs/progress/<id>_<nombre>.md`
-- [ ] Decisiones tÃ©cnicas documentadas
-- [ ] README actualizado (si aplica)
-- [ ] CHANGELOG actualizado (si aplica)
-
-### Testing
-- [ ] Unit tests escritos (si aplica)
-- [ ] Widget tests escritos (si aplica)
-- [ ] Tests pasan localmente
-- [ ] Cobertura â‰¥ 70% en cÃ³digo nuevo
+DescripciÃ³n detallada de la implementaciÃ³n, incluyendo:
+- QuÃ© se implementÃ³
+- Por quÃ© se implementÃ³ de esta manera
+- Decisiones tÃ©cnicas tomadas
+- Consideraciones especiales
 
 ---
 
-## âœ… Tareas Completadas
+## ğŸ¯ Tipo de Cambio
 
-- [x] Subtarea 1
-- [x] Subtarea 2
-- [x] Subtarea 3
+<!-- Marca con 'x' las opciones que apliquen -->
+
+- [ ] ğŸ› Bug fix (cambio no-breaking que corrige un issue)
+- [ ] âœ¨ Nueva feature (cambio no-breaking que aÃ±ade funcionalidad)
+- [ ] ğŸ’¥ Breaking change (fix o feature que causa cambios incompatibles)
+- [ ] ğŸ“š DocumentaciÃ³n
+- [ ] ğŸ¨ Estilo/Formateo
+- [ ] â™»ï¸ RefactorizaciÃ³n
+- [ ] âš¡ Mejora de performance
+- [ ] âœ… Tests
+- [ ] ğŸ”§ ConfiguraciÃ³n/Build
+
+---
+
+## ğŸ”— Issues Relacionados
+
+<!-- Referencia a issues que este PR resuelve o estÃ¡ relacionado -->
+
+- Closes #
+- Fixes #
+- Related to TASK_BREAKDOWN.md#<id>
+
+---
+
+## ğŸ§ª Testing
+
+<!-- Describe las pruebas que realizaste -->
+
+### Tests Ejecutados
+
+- [ ] Unit tests
+- [ ] Widget tests
+- [ ] Integration tests
+- [ ] Tests manuales en dispositivo
+
+### Plataformas Probadas
+
+- [ ] Android
+- [ ] iOS
+- [ ] Web
+- [ ] Windows Desktop
+
+### Dispositivos/Versiones de Prueba
+
+<!-- Ejemplo: Pixel 7 (Android 13), iPhone 14 (iOS 16.5) -->
+
+---
+
+## ğŸ“¸ Screenshots/Videos
+
+<!-- Si hay cambios visuales, agrega screenshots o GIFs -->
+
+### Antes
+
+N/A
+
+### DespuÃ©s
+
+N/A
+
+---
+
+## âœ… Checklist
+
+<!-- Marca con 'x' cuando hayas completado cada item -->
+
+### CÃ³digo
+
+- [ ] Mi cÃ³digo sigue las convenciones del proyecto
+- [ ] He realizado self-review de mi cÃ³digo
+- [ ] He comentado cÃ³digo complejo o no-obvio
+- [ ] He actualizado la documentaciÃ³n relevante
+- [ ] Mis cambios no generan nuevos warnings
+- [ ] He aÃ±adido tests que prueban mi fix/feature
+- [ ] Tests nuevos y existentes pasan localmente
+
+### Commits
+
+- [ ] Mis commits siguen Conventional Commits
+- [ ] He hecho commits atÃ³micos (1 feature/fix = 1 commit)
+- [ ] Mensajes de commit son descriptivos
+
+### DocumentaciÃ³n
+
+- [ ] He actualizado README.md (si aplica)
+- [ ] He actualizado CHANGELOG.md
+- [ ] He actualizado documentaciÃ³n tÃ©cnica (si aplica)
+
+### Tests y Calidad
+
+- [ ] `flutter analyze` pasa sin errores
+- [ ] `flutter test` pasa sin fallos
+- [ ] Cobertura de tests â‰¥ 70% en cÃ³digo nuevo
+- [ ] `dart format` aplicado
+
+### GitFlow
+
+- [ ] PR se crea desde rama correcta (feature/* â†’ develop)
+- [ ] Rama estÃ¡ actualizada con develop
+- [ ] No hay conflictos de merge
+
+---
+
+## ğŸ“Š Impacto en Performance
+
+<!-- Si aplica, describe el impacto en performance -->
+
+- Build size: <!-- ej: +50KB, -20KB, sin cambios -->
+- Consumo de RAM: <!-- ej: sin cambios, +10MB -->
+- Consumo de baterÃ­a: <!-- ej: sin cambios, mejora 5% -->
+
+---
+
+## ğŸ”„ Plan de Rollback
+
+<!-- Â¿CÃ³mo se puede revertir este cambio si es necesario? -->
+
+```bash
+git revert <commit-hash>
+```
 
 ---
 
@@ -1711,7 +1802,7 @@ Breve descripciÃ³n de lo implementado (2-3 lÃ­neas).
 
 ---
 
-## ğŸ§ª Validaciones
+## ğŸ§ª Validaciones Ejecutadas
 
 ```bash
 flutter analyze  # âœ… 0 issues
@@ -1723,8 +1814,27 @@ dart format .    # âœ… 0 changed
 
 ## ğŸ“ Decisiones TÃ©cnicas
 
-- **DecisiÃ³n 1:** RazÃ³n
-- **DecisiÃ³n 2:** RazÃ³n
+- **DecisiÃ³n 1:** RazÃ³n y justificaciÃ³n
+- **DecisiÃ³n 2:** RazÃ³n y justificaciÃ³n
+
+---
+
+## ğŸ“ Notas Adicionales
+
+<!-- Cualquier informaciÃ³n adicional para los reviewers -->
+
+---
+
+## ğŸ‘€ Reviewers
+
+<!-- Menciona a quien quieres que revise este PR -->
+<!-- @JuanPMorales -->
+
+---
+
+## ğŸ‰ Ready for Review
+
+- [ ] Este PR estÃ¡ listo para ser revisado
 
 ---
 
@@ -1739,8 +1849,10 @@ dart format .    # âœ… 0 changed
 
 ## â¡ï¸ PrÃ³ximos Pasos
 
+- Crear Pull Request: `feature/<nombre>` â†’ `develop`
+- Code Review (si aplica)
+- Mergear a develop
 - Tarea <id+1>: <nombre>
-- Mergear feature branch a develop (si aÃºn no se hizo)
 ```
 
 #### 15.3.6 ActualizaciÃ³n de TASK_BREAKDOWN.md
@@ -1966,11 +2078,11 @@ git push origin feature/nueva-funcionalidad
 # PR:
 ---
 
-##  RECORDATORIOS CRÍTICOS PARA LA IA
+##  RECORDATORIOS CRï¿½TICOS PARA LA IA
 
 ###  NUNCA OLVIDAR
 
-Esta sección contiene los errores más comunes que la IA **NUNCA** debe cometer.
+Esta secciï¿½n contiene los errores mï¿½s comunes que la IA **NUNCA** debe cometer.
 
 #### 1.  CADA TAREA = UNA RAMA FEATURE
 
@@ -1981,14 +2093,14 @@ git checkout develop
 git pull origin develop
 git checkout -b feature/<nombre-descriptivo>
 
-# Verificar que estás en la rama correcta
+# Verificar que estï¿½s en la rama correcta
 git branch  # Debe mostrar * feature/<nombre>
 ```
 
 ** PROHIBIDO:**
 - Commitear directamente a `develop` sin rama feature
-- Omitir la creación de rama feature
-- Usar nombre genérico como `feature/changes` o `feature/updates`
+- Omitir la creaciï¿½n de rama feature
+- Usar nombre genï¿½rico como `feature/changes` o `feature/updates`
 
 #### 2.  SIEMPRE CREAR docs/progress/<id>_<nombre>.md
 
@@ -1996,33 +2108,33 @@ git branch  # Debe mostrar * feature/<nombre>
 
 **El checklist DEBE incluir:**
 `markdown
-##  Checklist de Validación
+##  Checklist de Validaciï¿½n
 
-### Implementación
-- [ ] Código implementado según especificaciones
+### Implementaciï¿½n
+- [ ] Cï¿½digo implementado segï¿½n especificaciones
 - [ ] Arquitectura Clean respetada
 - [ ] Convenciones de naming seguidas
-- [ ] Documentación DartDoc completa
+- [ ] Documentaciï¿½n DartDoc completa
 - [ ] TODOs documentados correctamente
 
 ### Git Flow
 - [ ]  **Rama feature/* creada para esta tarea**
 - [ ] Rama nombrada correctamente
 - [ ] Commits siguen Conventional Commits
-- [ ] Commits atómicos
+- [ ] Commits atï¿½micos
 - [ ] Branch pusheado a origin
 
-### Calidad de Código
+### Calidad de Cï¿½digo
 - [ ] `flutter analyze` pasa sin errores
 - [ ] `flutter test` pasa (si hay tests)
 - [ ] `dart format` aplicado
 - [ ] Sin warnings nuevos
-- [ ] Código revisado
+- [ ] Cï¿½digo revisado
 
-### Documentación
+### Documentaciï¿½n
 - [ ] TASK_BREAKDOWN.md actualizado
 - [ ] Archivo de progreso creado
-- [ ] Decisiones técnicas documentadas
+- [ ] Decisiones tï¿½cnicas documentadas
 
 ### Testing
 - [ ] Unit tests escritos (si aplica)
@@ -2039,13 +2151,13 @@ git branch  # Debe mostrar * feature/<nombre>
 **OBLIGATORIO ejecutar:**
 ```bash
 flutter analyze    #  Debe retornar "No issues found!"
-dart format .      #  Formatear código
+dart format .      #  Formatear cï¿½digo
 flutter test       #  Si hay tests, deben pasar
 ```
 
 ** PROHIBIDO:**
-- Commitear con errores de análisis
-- Commitear código sin formatear
+- Commitear con errores de anï¿½lisis
+- Commitear cï¿½digo sin formatear
 - Commitear con tests fallando
 
 #### 4.  ACTUALIZAR TASK_BREAKDOWN.md
@@ -2053,28 +2165,28 @@ flutter test       #  Si hay tests, deben pasar
 **OBLIGATORIO:** Cambiar estado de tarea a ` Completada`
 
 ```markdown
-| 2.2.X | Descripción |  Completada | Dependencias |
+| 2.2.X | Descripciï¿½n |  Completada | Dependencias |
 ```
 
 #### 5.  MENSAJE AL USUARIO
 
-**OBLIGATORIO:** Después de cada tarea, mostrar:
+**OBLIGATORIO:** Despuï¿½s de cada tarea, mostrar:
 
 ```markdown
 ##  Tarea X.X.X Completada Exitosamente
 
 ###  Resumen
-[Descripción breve]
+[Descripciï¿½n breve]
 
 ###  Git Workflow Ejecutado
 `ash
  Rama: feature/<nombre>
- Análisis: No issues found!
+ Anï¿½lisis: No issues found!
  Commit: <hash>
  Push: origin/feature/<nombre>
 `
 
-###  Próximos Pasos
+###  Prï¿½ximos Pasos
 1. Crear PR: feature/<nombre>  develop
 2. Revisar cambios
 3. Mergear a develop
@@ -2087,25 +2199,25 @@ flutter test       #  Si hay tests, deben pasar
 
 Antes de empezar cualquier tarea, la IA debe verificar:
 
-- [ ] ¿Estoy en rama `develop` actualizada?
-- [ ] ¿He creado rama `feature/<nombre>` para esta tarea?
-- [ ] ¿He leído TASK_BREAKDOWN.md para esta tarea?
-- [ ] ¿He verificado dependencias de la tarea?
-- [ ] ¿Tengo claro qué archivos crear/modificar?
+- [ ] ï¿½Estoy en rama `develop` actualizada?
+- [ ] ï¿½He creado rama `feature/<nombre>` para esta tarea?
+- [ ] ï¿½He leï¿½do TASK_BREAKDOWN.md para esta tarea?
+- [ ] ï¿½He verificado dependencias de la tarea?
+- [ ] ï¿½Tengo claro quï¿½ archivos crear/modificar?
 
 ---
 
 ##  Checklist Post-Tarea (Ejecutar SIEMPRE)
 
-Después de completar cualquier tarea, la IA debe verificar:
+Despuï¿½s de completar cualquier tarea, la IA debe verificar:
 
-- [ ] ¿Ejecuté `flutter analyze` sin errores?
-- [ ] ¿Ejecuté `dart format .`?
-- [ ] ¿Actualicé TASK_BREAKDOWN.md?
-- [ ] ¿Creé `docs/progress/<id>_<nombre>.md` con checklist?
-- [ ] ¿Hice commit con Conventional Commits?
-- [ ] ¿Pusheé a `origin/feature/<nombre>`?
-- [ ] ¿Informé al usuario con mensaje completo?
+- [ ] ï¿½Ejecutï¿½ `flutter analyze` sin errores?
+- [ ] ï¿½Ejecutï¿½ `dart format .`?
+- [ ] ï¿½Actualicï¿½ TASK_BREAKDOWN.md?
+- [ ] ï¿½Creï¿½ `docs/progress/<id>_<nombre>.md` con checklist?
+- [ ] ï¿½Hice commit con Conventional Commits?
+- [ ] ï¿½Pusheï¿½ a `origin/feature/<nombre>`?
+- [ ] ï¿½Informï¿½ al usuario con mensaje completo?
 
 ---
 
@@ -2113,7 +2225,7 @@ Después de completar cualquier tarea, la IA debe verificar:
 
 ```
 1. git checkout -b feature/<nombre>   CREAR RAMA
-2. [Implementar código]
+2. [Implementar cï¿½digo]
 3. flutter analyze                    VALIDAR
 4. dart format .                      FORMATEAR
 5. Crear docs/progress/<id>.md        DOCUMENTAR CON CHECKLIST
@@ -2125,10 +2237,10 @@ Después de completar cualquier tarea, la IA debe verificar:
 
 ---
 
-** Última actualización:** 2025-11-13 (Versión 1.2)  
+** ï¿½ltima actualizaciï¿½n:** 2025-11-13 (Versiï¿½n 1.2)  
 ** Contacto:** JuanPMorales  
 
 ---
 
 _Este documento es la **fuente de verdad** para todas las IAs que trabajen en Task Timer._  
-_Cualquier código generado que no cumpla estas reglas debe ser rechazado._
+_Cualquier cï¿½digo generado que no cumpla estas reglas debe ser rechazado._
