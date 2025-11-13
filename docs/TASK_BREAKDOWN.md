@@ -82,7 +82,7 @@ Las tareas con dependencias se marcan con `⚠️ Depende de: [ID]`
 | 2.2.2 | Crear provider global de tareas (`taskListProvider`) en `/presentation/providers/` | ✅ Completada | 2.2.1 |
 | 2.2.3 | Crear provider de temporizador (`timerStateProvider`) | ✅ Completada | 2.2.1 |
 | 2.2.4 | Crear provider de base de datos (`databaseProvider`) | ✅ Completada | 2.2.1 |
-| 2.2.5 | Documentar jerarquía y relaciones de providers en `docs/PROVIDERS.md` | ⏳ Pendiente | 2.2.2-2.2.4 |
+| 2.2.5 | Documentar jerarquía y relaciones de providers en `docs/PROVIDERS.md` | ✅ Completada | 2.2.2-2.2.4 |
 
 **Nota:** Utilizar `StateNotifierProvider` para lógica compleja y `FutureProvider` para datos asíncronos.
 
