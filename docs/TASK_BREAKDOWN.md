@@ -64,12 +64,12 @@ Las tareas con dependencias se marcan con `⚠️ Depende de: [ID]`
 
 | ID | Tarea | Estado | Dependencias |
 |---|---|---|---|
-| 2.1.1 | Crear `/core` con subcarpetas: `theme/`, `constants/`, `utils/`, `errors/` | ⏳ Pendiente | 1.1.8 |
-| 2.1.2 | Crear `/data` con subcarpetas: `models/`, `repositories/`, `database/`, `datasources/` | ⏳ Pendiente | 1.1.8 |
-| 2.1.3 | Crear `/domain` con subcarpetas: `entities/`, `usecases/`, `repositories/` (interfaces) | ⏳ Pendiente | 1.1.8 |
-| 2.1.4 | Crear `/presentation` con subcarpetas: `providers/`, `screens/`, `widgets/`, `viewmodels/` | ⏳ Pendiente | 1.1.8 |
-| 2.1.5 | Crear `/services` para integraciones nativas: `volume/`, `vibration/`, `background/` | ⏳ Pendiente | 1.1.8 |
-| 2.1.6 | Crear archivo `main.dart` como punto de entrada con estructura base | ⏳ Pendiente | 2.1.1-2.1.5 |
+| 2.1.1 | Crear `/core` con subcarpetas: `theme/`, `constants/`, `utils/`, `errors/` | ✅ Completada | 1.1.8 |
+| 2.1.2 | Crear `/data` con subcarpetas: `models/`, `repositories/`, `database/`, `datasources/` | ✅ Completada | 1.1.8 |
+| 2.1.3 | Crear `/domain` con subcarpetas: `entities/`, `usecases/`, `repositories/` (interfaces) | ✅ Completada | 1.1.8 |
+| 2.1.4 | Crear `/presentation` con subcarpetas: `providers/`, `screens/`, `widgets/`, `viewmodels/` | ✅ Completada | 1.1.8 |
+| 2.1.5 | Crear `/services` para integraciones nativas: `volume/`, `vibration/`, `background/` | ✅ Completada | 1.1.8 |
+| 2.1.6 | Crear archivo `main.dart` como punto de entrada con estructura base | ✅ Completada | 2.1.1-2.1.5 |
 | 2.1.7 | Documentar arquitectura en `docs/ARCHITECTURE.md` con diagramas | ⏳ Pendiente | 2.1.6 |
 
 **Principio:** Clean Architecture con separación clara de capas (domain → data → presentation).

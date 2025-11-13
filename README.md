@@ -11,6 +11,15 @@
 
 ---
 
+## 🎨 Diseño de Referencia
+
+<div align="center">
+  <img src="docs/assets/task_timer_mockup.png" alt="Task Timer App Mockup" width="800"/>
+  <p><em>Diseño objetivo: Lista de tareas con degradados azules y pantalla de cronómetro circular</em></p>
+</div>
+
+---
+
 ## 📖 Descripción
 
 **Task Timer App** es una aplicación móvil diseñada para maximizar la productividad mediante la gestión de tareas con temporizador integrado. Permite crear, organizar y ejecutar tareas con control de tiempo preciso, ideal para técnicas como Pomodoro, Time Blocking y gestión de proyectos.
