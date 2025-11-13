@@ -663,6 +663,187 @@ class TaskRepositoryImpl implements TaskRepository {
 }
 ```
 
+### 9.6 Control de Versiones - Commits Obligatorios
+
+**REGLA CRÍTICA:** Después de completar cada tarea del TASK_BREAKDOWN.md, la IA **DEBE** realizar commits siguiendo el workflow de Git profesional.
+
+#### 9.6.1 Flujo Obligatorio por Tarea
+
+```bash
+# === PASO 1: Crear rama feature (si no existe) ===
+git checkout develop
+git pull origin develop
+git checkout -b feature/<nombre-descriptivo>
+
+# === PASO 2: Implementar la tarea ===
+# [Código generado por la IA]
+
+# === PASO 3: Validar código ===
+flutter analyze    # Debe pasar sin errores
+flutter test       # Todos los tests deben pasar
+flutter format .   # Formatear código
+
+# === PASO 4: Hacer commit con Conventional Commits ===
+git add .
+git commit -m "<type>(<scope>): <description>
+
+<body opcional explicando los cambios>
+
+Refs: TASK_BREAKDOWN.md#<id-tarea>"
+
+# === PASO 5: Push a la rama feature ===
+git push -u origin feature/<nombre-descriptivo>
+```
+
+#### 9.6.2 Cuándo Hacer Commits
+
+La IA debe hacer commit en los siguientes casos:
+
+| Situación | Acción | Tipo de Commit |
+|-----------|--------|----------------|
+| ✅ Tarea completada | Commit obligatorio | `feat`, `fix`, `refactor`, etc. |
+| ✅ Documentación creada | Commit obligatorio | `docs` |
+| ✅ Tests agregados/modificados | Commit obligatorio | `test` |
+| ✅ Múltiples archivos relacionados | Commit único atómico | Según el cambio principal |
+| ❌ Código incompleto | NO hacer commit | - |
+| ❌ Tests fallando | NO hacer commit | - |
+| ❌ Errores de análisis | NO hacer commit | - |
+
+#### 9.6.3 Formato de Commits de la IA
+
+**Template obligatorio:**
+
+```bash
+<type>(<scope>): <short description>
+
+<optional body explaining:
+- What was implemented
+- Why it was implemented this way
+- Any important decisions made>
+
+<optional footer:
+Refs: TASK_BREAKDOWN.md#<task-id>
+Closes: #<issue-number> (si aplica)>
+```
+
+**Ejemplo real:**
+
+```bash
+feat(riverpod): configure ProviderScope in main.dart
+
+Completa tarea 2.2.1 del TASK_BREAKDOWN.md
+
+- Importa flutter_riverpod en main.dart
+- Envuelve TaskTimerApp con ProviderScope
+- Habilita gestión de estado reactivo global
+- Valida con flutter analyze sin errores
+
+Refs: TASK_BREAKDOWN.md#2.2.1
+```
+
+#### 9.6.4 Sugerencia de Commits al Usuario
+
+Al finalizar una tarea, la IA debe mostrar:
+
+```markdown
+## ✅ Tarea Completada: <nombre-tarea>
+
+**Archivos modificados:**
+- `path/to/file1.dart`
+- `path/to/file2.dart`
+
+**Comando Git sugerido:**
+
+\`\`\`bash
+git add .
+git commit -m "feat(core): configure Riverpod ProviderScope
+
+Completa tarea 2.2.1 del TASK_BREAKDOWN.md
+
+- Importa flutter_riverpod en main.dart
+- Envuelve app con ProviderScope
+- Habilita gestión de estado global
+
+Refs: TASK_BREAKDOWN.md#2.2.1"
+\`\`\`
+
+**¿Deseas que ejecute este commit ahora? (Sí/No)**
+```
+
+#### 9.6.5 Ejecución Automática de Commits
+
+Si el usuario responde "Sí" o si está configurado el modo automático:
+
+```bash
+# La IA ejecuta:
+git add .
+git status  # Mostrar archivos añadidos
+git commit -m "<mensaje-generado>"
+git log -1 --oneline  # Confirmar commit exitoso
+```
+
+#### 9.6.6 Validaciones Previas al Commit
+
+**OBLIGATORIO antes de commit:**
+
+```bash
+# 1. Análisis de código
+flutter analyze
+# Resultado esperado: "No issues found!"
+
+# 2. Tests (si existen para esta tarea)
+flutter test
+# Resultado esperado: "All tests passed!"
+
+# 3. Formato
+flutter format lib/ test/
+# Resultado esperado: Sin cambios pendientes
+```
+
+Si alguna validación falla, la IA debe:
+1. Corregir los errores automáticamente
+2. Volver a validar
+3. Solo entonces hacer el commit
+
+#### 9.6.7 Actualización de Documentación en el Commit
+
+Cada commit debe incluir:
+
+1. **Actualización de TASK_BREAKDOWN.md:**
+   ```markdown
+   | 2.2.1 | Configurar ProviderScope | ✅ Completada | 1.1.8, 2.1.6 |
+   ```
+
+2. **Creación de archivo de progreso:**
+   ```markdown
+   docs/progress/<id>_<nombre>.md
+   ```
+
+3. **Ambos archivos en el mismo commit:**
+   ```bash
+   git add docs/TASK_BREAKDOWN.md
+   git add docs/progress/2.2.1_riverpod_configuracion.md
+   git add lib/main.dart
+   git commit -m "feat(riverpod): configure ProviderScope..."
+   ```
+
+#### 9.6.8 Mensaje al Usuario Después del Commit
+
+```markdown
+✅ **Commit realizado exitosamente**
+
+**Commit hash:** `abc1234`
+**Rama:** `feature/configure-riverpod`
+**Archivos:** 3 archivos modificados
+
+**Próximos pasos:**
+1. Revisar cambios: `git show abc1234`
+2. Push a remoto: `git push origin feature/configure-riverpod`
+3. Continuar con siguiente tarea: 2.2.2
+
+**Nota:** Recuerda hacer push antes de cambiar de rama.
+```
+
 ---
 
 ## 10. Limitaciones de la IA

@@ -6,6 +6,7 @@ library;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:task_timer/core/constants/app_constants.dart';
 import 'package:task_timer/core/theme/app_colors.dart';
 import 'package:task_timer/l10n/app_localizations.dart';
@@ -17,7 +18,12 @@ void main() {
 
   // TODO(Sprint-2): Inicializar servicios (base de datos, providers, etc.)
 
-  runApp(const TaskTimerApp());
+  // Envolver la aplicación con ProviderScope para habilitar Riverpod
+  runApp(
+    const ProviderScope(
+      child: TaskTimerApp(),
+    ),
+  );
 }
 
 /// Widget raíz de la aplicación
