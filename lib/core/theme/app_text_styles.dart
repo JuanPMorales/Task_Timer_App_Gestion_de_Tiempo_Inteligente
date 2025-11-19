@@ -1,14 +1,27 @@
-/// Estilos de texto de Task Timer App
+/// Estilos tipográficos de la aplicación Task Timer.
 ///
-/// Define los estilos tipográficos utilizados en toda la aplicación.
+/// Define todos los estilos de texto utilizados en la aplicación siguiendo
+/// las especificaciones del PRD. Incluye headings, body text, labels y
+/// estilos especiales para timer y task cards.
+///
+/// Criterios de diseño:
+/// - Escala tipográfica modular (1.25 ratio)
+/// - Line height optimizado para legibilidad
+/// - Letter spacing ajustado por tamaño
+/// - Soporte para números tabulares en timers
+/// - Respeta configuración de accesibilidad del sistema
 library;
 
 import 'package:flutter/material.dart';
 import 'package:task_timer/core/theme/app_colors.dart';
 
 /// Clase que contiene todos los estilos de texto de la aplicación.
+///
+/// Proporciona estilos consistentes y accesibles para todos los componentes.
+/// Los estilos están optimizados para dark mode y cumplen con WCAG 2.1 AA.
 class AppTextStyles {
-  AppTextStyles._(); // Constructor privado
+  // Constructor privado para prevenir instanciación
+  AppTextStyles._();
 
   // Headings (Títulos)
   /// Título principal de pantallas (ej: "Task Timer")
@@ -140,4 +153,134 @@ class AppTextStyles {
     fontWeight: FontWeight.normal,
     color: AppColors.textSecondary,
   );
+
+  // Button Styles
+  /// Texto de botón principal
+  static const TextStyle buttonPrimary = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textOnPrimary,
+    letterSpacing: 0.5,
+  );
+
+  /// Texto de botón secundario
+  static const TextStyle buttonSecondary = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textPrimary,
+    letterSpacing: 0.3,
+  );
+
+  /// Texto de botón de texto (text button)
+  static const TextStyle buttonText = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: AppColors.primaryLight,
+    letterSpacing: 0.3,
+  );
+
+  // Input Styles
+  /// Texto de input/campo de formulario
+  static const TextStyle input = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.normal,
+    color: AppColors.textPrimary,
+    height: 1.5,
+  );
+
+  /// Hint text en inputs
+  static const TextStyle inputHint = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.normal,
+    color: AppColors.textTertiary,
+  );
+
+  /// Label de input
+  static const TextStyle inputLabel = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textSecondary,
+    letterSpacing: 0.2,
+  );
+
+  // ============================================================================
+  // UTILIDADES
+  // ============================================================================
+
+  /// Crea una variante del estilo con color personalizado
+  ///
+  /// Ejemplo:
+  /// ```dart
+  /// final blueHeading = AppTextStyles.withColor(
+  ///   AppTextStyles.heading1,
+  ///   AppColors.primaryLight,
+  /// );
+  /// ```
+  static TextStyle withColor(TextStyle style, Color color) {
+    return style.copyWith(color: color);
+  }
+
+  /// Crea una variante del estilo con peso personalizado
+  ///
+  /// Ejemplo:
+  /// ```dart
+  /// final lightBody = AppTextStyles.withWeight(
+  ///   AppTextStyles.bodyLarge,
+  ///   FontWeight.w300,
+  /// );
+  /// ```
+  static TextStyle withWeight(TextStyle style, FontWeight weight) {
+    return style.copyWith(fontWeight: weight);
+  }
+
+  /// Crea una variante del estilo con tamaño personalizado
+  ///
+  /// Ejemplo:
+  /// ```dart
+  /// final largeTimer = AppTextStyles.withSize(
+  ///   AppTextStyles.timerDisplay,
+  ///   72,
+  /// );
+  /// ```
+  static TextStyle withSize(TextStyle style, double fontSize) {
+    return style.copyWith(fontSize: fontSize);
+  }
+
+  /// Crea una variante del estilo con opacidad aplicada
+  ///
+  /// Ejemplo:
+  /// ```dart
+  /// final fadedText = AppTextStyles.withOpacity(
+  ///   AppTextStyles.bodyLarge,
+  ///   0.5,
+  /// );
+  /// ```
+  static TextStyle withOpacity(TextStyle style, double opacity) {
+    final color = style.color;
+    if (color == null) return style;
+
+    return style.copyWith(
+      color: Color.fromRGBO(
+        (color.r * 255).round(),
+        (color.g * 255).round(),
+        (color.b * 255).round(),
+        opacity,
+      ),
+    );
+  }
+
+  /// Aplica sombra de texto para mayor legibilidad
+  ///
+  /// Útil para texto sobre imágenes o fondos con bajo contraste
+  static TextStyle withShadow(TextStyle style) {
+    return style.copyWith(
+      shadows: [
+        const Shadow(
+          offset: Offset(0, 1),
+          blurRadius: 2,
+          color: AppColors.shadowMedium,
+        ),
+      ],
+    );
+  }
 }
