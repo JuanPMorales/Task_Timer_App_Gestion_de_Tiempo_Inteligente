@@ -94,7 +94,7 @@ Las tareas con dependencias se marcan con `⚠️ Depende de: [ID]`
 | 2.3.2 | Definir tipografía en `/core/theme/app_text_styles.dart` (headings, body, labels) | ✅ Completada | 2.1.1 |
 | 2.3.3 | Crear `AppTheme` con dark mode por defecto en `/core/theme/app_theme.dart` | ✅ Completada | 2.3.1, 2.3.2 |
 | 2.3.4 | Definir espaciados y dimensiones en `/core/theme/app_dimensions.dart` | ✅ Completada | 2.1.1 |
-| 2.3.5 | Integrar tema en `MaterialApp` dentro de `main.dart` | ⏳ Pendiente | 2.3.3, 2.1.6 |
+| 2.3.5 | Integrar tema en `MaterialApp` dentro de `main.dart` | ✅ Completada | 2.3.3, 2.1.6 |
 
 **Criterio de diseño:** Accesibilidad WCAG 2.1 AA (contraste, tamaños táctiles 44x44dp).
 
@@ -102,11 +102,11 @@ Las tareas con dependencias se marcan con `⚠️ Depende de: [ID]`
 
 | ID | Tarea | Estado | Dependencias |
 |---|---|---|---|
-| 2.4.1 | Crear `/core/constants/app_constants.dart` con valores globales (timeouts, límites) | ⏳ Pendiente | 2.1.1 |
-| 2.4.2 | Crear `/core/utils/time_formatter.dart` con funciones de formato (mm:ss, hh:mm:ss) | ⏳ Pendiente | 2.1.1 |
-| 2.4.3 | Crear `/core/utils/validators.dart` con validaciones (nombre, duración, etc.) | ⏳ Pendiente | 2.1.1 |
-| 2.4.4 | Crear `/core/errors/exceptions.dart` con excepciones personalizadas | ⏳ Pendiente | 2.1.1 |
-| 2.4.5 | Crear `/core/errors/failures.dart` para manejo de errores en domain layer | ⏳ Pendiente | 2.1.1 |
+| 2.4.1 | Crear `/core/constants/app_constants.dart` con valores globales (timeouts, límites) | ✅ Completada | 2.1.1 |
+| 2.4.2 | Crear `/core/utils/time_formatter.dart` con funciones de formato (mm:ss, hh:mm:ss) | ✅ Completada | 2.1.1 |
+| 2.4.3 | Crear `/core/utils/validators.dart` con validaciones (nombre, duración, etc.) | ✅ Completada | 2.1.1 |
+| 2.4.4 | Crear `/core/errors/exceptions.dart` con excepciones personalizadas | ✅ Completada | 2.1.1 |
+| 2.4.5 | Crear `/core/errors/failures.dart` para manejo de errores en domain layer | ✅ Completada | 2.1.1 |
 
 ---
 
