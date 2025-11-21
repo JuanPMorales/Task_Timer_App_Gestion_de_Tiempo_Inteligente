@@ -670,9 +670,10 @@ class TaskRepositoryImpl implements TaskRepository {
 
 **🚨 IMPORTANTE - NUNCA OLVIDAR:**
 1. ✅ **CADA TAREA = UNA RAMA FEATURE/** - Sin excepción
-2. ✅ **SIEMPRE crear archivo `docs/progress/<id>_<nombre>.md`** con checklist completo
+2. ✅ **SIEMPRE crear archivo `docs/progress/<id>_<nombre>.md`** con checklist completo Y formulario de PR
 3. ✅ **NUNCA commitear directamente a `develop`** sin rama feature
 4. ✅ **SIEMPRE validar con `flutter analyze`** antes de commit
+5. ✅ **EL FORMULARIO DE PR ES OBLIGATORIO** - Debe incluirse AL FINAL de cada archivo de progreso
 
 #### 9.6.1 Flujo Obligatorio por Tarea
 
@@ -831,9 +832,27 @@ Cada commit debe incluir:
    | 2.2.1 | Configurar ProviderScope | ✅ Completada | 1.1.8, 2.1.6 |
    ```
 
-2. **Creación de archivo de progreso:**
+2. **Creación de archivo de progreso (CON FORMULARIO DE PR OBLIGATORIO):**
    ```markdown
    docs/progress/<id>_<nombre>.md
+   
+   # Contenido del archivo de progreso
+   
+   [... contenido normal del progreso ...]
+   
+   ---
+   
+   ## 📋 Formulario para Pull Request
+   
+   ## 📝 Descripción
+   [Descripción clara y concisa de los cambios]
+   
+   ## 🎯 Tipo de Cambio
+   - [x] ✨ Nueva feature (cambio no-breaking que añade funcionalidad)
+   [... resto del formulario completo ...]
+   
+   ## 🎉 Ready for Review
+   - [x] Este PR está listo para ser revisado
    ```
 
 3. **Ambos archivos en el mismo commit:**
@@ -844,7 +863,150 @@ Cada commit debe incluir:
    git commit -m "feat(riverpod): configure ProviderScope..."
    ```
 
-#### 9.6.8 Mensaje al Usuario Después del Commit
+#### 9.6.8 Formulario de Pull Request - OBLIGATORIO EN TODOS LOS ARCHIVOS DE PROGRESO
+
+**🚨 REGLA CRÍTICA:** Todo archivo `docs/progress/<id>_<nombre>.md` **DEBE** incluir el formulario completo de PR al final.
+
+**Template del Formulario (COPIAR COMPLETO):**
+
+```markdown
+---
+
+## 📋 Formulario para Pull Request
+
+## 📝 Descripción
+
+[Descripción clara y concisa de los cambios implementados]
+
+**Cambios principales:**
+- [Lista de cambios clave]
+- [Archivos creados/modificados]
+- [Validaciones realizadas]
+
+## 🎯 Tipo de Cambio
+
+- [ ] 🐛 Bug fix (cambio no-breaking que corrige un issue)
+- [ ] ✨ Nueva feature (cambio no-breaking que añade funcionalidad)
+- [ ] 💥 Breaking change (fix o feature que causa cambios incompatibles)
+- [ ] 📚 Documentación
+- [ ] 🎨 Estilo/Formateo
+- [ ] ♻️ Refactorización
+- [ ] ⚡ Mejora de performance
+- [ ] ✅ Tests
+- [ ] 🔧 Configuración/Build
+
+## 🔗 Issues Relacionados
+
+- Related to tarea <id> en TASK_BREAKDOWN.md
+- Depende de: [tareas previas]
+- Será utilizado por: [tareas futuras]
+
+## 🧪 Testing
+
+### Tests Ejecutados
+
+- [ ] `flutter analyze` - [resultado]
+- [ ] `dart format` - [resultado]
+- [ ] Unit tests (pendiente/completado)
+- [ ] Widget tests (pendiente/completado)
+- [ ] Integration tests (pendiente/completado)
+- [ ] Tests manuales en dispositivo
+
+### Plataformas Probadas
+
+- [ ] Android
+- [ ] iOS
+- [ ] Web
+- [ ] Windows Desktop
+
+### Dispositivos/Versiones de Prueba
+
+[Describir dispositivos usados o indicar "Pendiente"]
+
+## 📸 Screenshots/Videos
+
+[Agregar screenshots si aplica, o indicar "No aplica"]
+
+## ✅ Checklist
+
+### Código
+
+- [ ] Mi código sigue las convenciones del proyecto
+- [ ] He realizado self-review de mi código
+- [ ] He comentado código complejo o no-obvio
+- [ ] He actualizado la documentación relevante (TASK_BREAKDOWN.md)
+- [ ] Mis cambios no generan nuevos warnings
+- [ ] He añadido tests que prueban mi fix/feature
+- [ ] Tests nuevos y existentes pasan localmente
+
+### Commits
+
+- [ ] Mis commits siguen Conventional Commits
+- [ ] He hecho commits atómicos (1 feature/fix = 1 commit)
+- [ ] Mensajes de commit son descriptivos
+
+### Documentación
+
+- [ ] He actualizado README.md (si aplica)
+- [ ] He actualizado CHANGELOG.md (pendiente)
+- [ ] He actualizado documentación técnica (TASK_BREAKDOWN.md)
+
+### Tests y Calidad
+
+- [ ] `flutter analyze` pasa sin errores
+- [ ] `flutter test` pasa sin fallos
+- [ ] Cobertura de tests ≥ 90% en código nuevo
+- [ ] `flutter format` aplicado
+
+### GitFlow
+
+- [ ] PR se crea desde rama correcta (feature/* → develop)
+- [ ] Rama está actualizada con develop
+- [ ] No hay conflictos de merge
+
+## 📊 Impacto en Performance
+
+- Build size: [sin cambios / +XKB / -XKB]
+- Consumo de RAM: [sin cambios / +XMB]
+- Consumo de batería: [sin impacto / mejora X%]
+- Tiempo de compilación: [insignificante / +Xs]
+
+## 🔄 Plan de Rollback
+
+```bash
+git revert <commit-hash>
+# o
+git checkout develop
+git reset --hard HEAD~1
+```
+
+[Explicar si el rollback es seguro y por qué]
+
+## 📝 Notas Adicionales
+
+**Características destacadas:**
+1. [Característica 1]
+2. [Característica 2]
+
+**Uso futuro:**
+[Cómo se usará este código en el futuro]
+
+---
+
+## 👀 Reviewers
+
+@JuanPMorales
+
+## 🎉 Ready for Review
+
+- [x] Este PR está listo para ser revisado
+```
+
+**❌ NUNCA omitir este formulario**
+**✅ Adaptar el contenido a cada tarea específica**
+**✅ Marcar todos los checkboxes aplicables con [x]**
+
+#### 9.6.9 Mensaje al Usuario Después del Commit
 
 ```markdown
 ✅ **Commit realizado exitosamente**
@@ -853,10 +1015,13 @@ Cada commit debe incluir:
 **Rama:** `feature/configure-riverpod`
 **Archivos:** 3 archivos modificados
 
+**📋 Formulario de PR incluido:** ✅ docs/progress/2.2.1_riverpod_configuracion.md
+
 **Próximos pasos:**
 1. Revisar cambios: `git show abc1234`
 2. Push a remoto: `git push origin feature/configure-riverpod`
-3. Continuar con siguiente tarea: 2.2.2
+3. **Crear Pull Request en GitHub** usando el formulario del archivo de progreso
+4. Continuar con siguiente tarea: 2.2.2
 
 **Nota:** Recuerda hacer push antes de cambiar de rama.
 ```
@@ -1997,7 +2162,151 @@ git pull origin develop
 git branch -d feature/nombre-descriptivo
 ```
 
-### 16.5 Flujo de Release (Para Versiones)
+### 16.5 Flujo de Pull Requests - PROCESO CORRECTO
+
+**🚨 IMPORTANTE:** La IA NO crea Pull Requests. El usuario (Product Owner) las crea manualmente.
+
+#### 16.5.1 Responsabilidades de la IA
+
+La IA **SOLO** debe:
+1. ✅ Crear rama `feature/*`
+2. ✅ Implementar la tarea
+3. ✅ Hacer commit con Conventional Commits
+4. ✅ Push de la rama feature al remoto
+5. ✅ **Crear archivo `docs/progress/<id>.md` CON FORMULARIO DE PR COMPLETO**
+6. ✅ Informar al usuario que puede crear el PR
+
+La IA **NO** debe:
+- ❌ Crear Pull Requests
+- ❌ Hacer merge de ramas
+- ❌ Eliminar ramas remotas
+
+#### 16.5.2 Responsabilidades del Usuario (Product Owner)
+
+El usuario debe:
+1. ✅ Revisar el código en la rama `feature/*`
+2. ✅ Crear Pull Request: `feature/* → develop` en GitHub
+3. ✅ Usar el formulario del archivo `docs/progress/<id>.md` como descripción del PR
+4. ✅ Aprobar y mergear el PR
+5. ✅ Eliminar rama `feature/*` en GitHub después del merge
+6. ✅ Hacer `git pull origin develop` localmente
+7. ✅ Eliminar rama `feature/*` local con `git branch -d feature/*`
+
+#### 16.5.3 Flujo Completo (IA + Usuario)
+
+```bash
+# === ACCIONES DE LA IA ===
+
+# 1. IA: Crear feature branch
+git checkout develop
+git pull origin develop
+git checkout -b feature/2.3.4-app-dimensions
+
+# 2. IA: Implementar tarea
+# [Código + tests + documentación]
+
+# 3. IA: Crear archivo de progreso CON FORMULARIO
+# docs/progress/2.3.4_app_dimensions.md
+# [Incluye formulario completo de PR al final]
+
+# 4. IA: Validar
+flutter analyze
+flutter test
+flutter format .
+
+# 5. IA: Commit
+git add .
+git commit -m "feat(tema): definir sistema de espaciados y dimensiones"
+
+# 6. IA: Push
+git push -u origin feature/2.3.4-app-dimensions
+
+# 7. IA: Informar al usuario
+"""
+✅ Tarea 2.3.4 completada
+
+**Rama:** feature/2.3.4-app-dimensions
+**Commit:** abc1234
+**Archivos:**
+- lib/core/theme/app_dimensions.dart (nuevo)
+- docs/progress/2.3.4_app_dimensions.md (nuevo, CON FORMULARIO DE PR)
+- docs/TASK_BREAKDOWN.md (actualizado)
+
+📋 **Formulario de PR disponible en:**
+docs/progress/2.3.4_app_dimensions.md
+
+**Próximos pasos (Usuario):**
+1. Revisar cambios en GitHub
+2. Crear Pull Request: feature/2.3.4-app-dimensions → develop
+3. Copiar formulario de docs/progress/2.3.4_app_dimensions.md al PR
+4. Aprobar y mergear PR
+5. Eliminar rama remota en GitHub
+6. Ejecutar: git pull origin develop
+7. Ejecutar: git branch -d feature/2.3.4-app-dimensions
+"""
+
+# === ACCIONES DEL USUARIO ===
+
+# 8. Usuario: Crear PR en GitHub UI
+# - Base: develop
+# - Compare: feature/2.3.4-app-dimensions
+# - Copiar formulario de docs/progress/2.3.4_app_dimensions.md
+
+# 9. Usuario: Aprobar y mergear PR en GitHub
+
+# 10. Usuario: Eliminar rama remota en GitHub
+# (Click en botón "Delete branch" después del merge)
+
+# 11. Usuario: Actualizar develop local
+git checkout develop
+git pull origin develop
+
+# 12. Usuario: Eliminar rama feature local
+git branch -d feature/2.3.4-app-dimensions
+```
+
+#### 16.5.4 Flujo de Sincronización: develop → main
+
+**Cuándo sincronizar:**
+- Después de completar un grupo de tareas relacionadas
+- Antes de un release
+- Según criterio del Product Owner
+
+**Proceso (Usuario):**
+
+```bash
+# === OPCIÓN 1: Pull Request (Recomendado para revisiones) ===
+
+# 1. Usuario: Crear PR en GitHub
+# Base: main
+# Compare: develop
+# Descripción: Listar todas las tareas completadas
+
+# 2. Usuario: Aprobar y mergear PR
+
+# === OPCIÓN 2: Merge Directo (Más rápido) ===
+
+# 1. Usuario: Actualizar develop
+git checkout develop
+git pull origin develop
+
+# 2. Usuario: Cambiar a main
+git checkout main
+git pull origin main
+
+# 3. Usuario: Hacer merge
+git merge develop -m "merge: sincronizar develop con main (tareas X.X.X a Y.Y.Y)"
+
+# 4. Usuario: Push a main
+git push origin main
+
+# 5. Usuario: Regresar a develop
+git checkout develop
+```
+
+**⚠️ IMPORTANTE:** La sincronización `develop → main` es **responsabilidad exclusiva del usuario**.
+
+### 16.6 Flujo de Release (Para Versiones)
 
 **Cuando develop está listo para producción:**
 
