@@ -93,7 +93,7 @@ Las tareas con dependencias se marcan con `⚠️ Depende de: [ID]`
 | 2.3.1 | Definir paleta de colores en `/core/theme/app_colors.dart` (primarios, secundarios, semánticos) | ✅ Completada | 2.1.1 |
 | 2.3.2 | Definir tipografía en `/core/theme/app_text_styles.dart` (headings, body, labels) | ✅ Completada | 2.1.1 |
 | 2.3.3 | Crear `AppTheme` con dark mode por defecto en `/core/theme/app_theme.dart` | ✅ Completada | 2.3.1, 2.3.2 |
-| 2.3.4 | Definir espaciados y dimensiones en `/core/theme/app_dimensions.dart` | ⏳ Pendiente | 2.1.1 |
+| 2.3.4 | Definir espaciados y dimensiones en `/core/theme/app_dimensions.dart` | ✅ Completada | 2.1.1 |
 | 2.3.5 | Integrar tema en `MaterialApp` dentro de `main.dart` | ⏳ Pendiente | 2.3.3, 2.1.6 |
 
 **Criterio de diseño:** Accesibilidad WCAG 2.1 AA (contraste, tamaños táctiles 44x44dp).
