@@ -131,7 +131,7 @@ Las tareas con dependencias se marcan con `⚠️ Depende de: [ID]`
 
 | ID | Tarea | Estado | Dependencias |
 |---|---|---|---|
-| 3.2.1 | Crear `CreateTaskUseCase` en `/domain/usecases/create_task.dart` | ⏳ Pendiente | 3.1.3 |
+| 3.2.1 | Crear `CreateTaskUseCase` en `/domain/usecases/create_task.dart` | ✅ Completada | 3.1.3 |
 | 3.2.2 | Crear `GetAllTasksUseCase` con filtro opcional (activas/archivadas) | ⏳ Pendiente | 3.1.3 |
 | 3.2.3 | Crear `UpdateTaskUseCase` | ⏳ Pendiente | 3.1.3 |
 | 3.2.4 | Crear `DeleteTaskUseCase` | ⏳ Pendiente | 3.1.3 |
