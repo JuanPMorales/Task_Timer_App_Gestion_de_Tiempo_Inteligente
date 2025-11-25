@@ -122,7 +122,7 @@ Las tareas con dependencias se marcan con `⚠️ Depende de: [ID]`
 | 3.1.4 | Implementar `TaskRepositoryImpl` en `/data/repositories/task_repository_impl.dart` | ✅ Completada | 3.1.2, 3.1.3 |
 | 3.1.5 | Crear métodos CRUD en `TaskRepository`: `create`, `getAll`, `getById`, `update`, `delete` | ✅ Completada | 3.1.4 |
 | 3.1.6 | Implementar validaciones de negocio (nombre no vacío, duración > 0) en repository | ✅ Completada | 3.1.5, 2.4.3 |
-| 3.1.7 | Definir esquema de tabla `tasks` con campos: `id`, `name`, `duration`, `color`, `created_at`, `archived` | ⏳ Pendiente | 6.1.3 |
+| 3.1.7 | Definir esquema de tabla `tasks` con campos: `id`, `name`, `duration`, `color`, `created_at`, `archived` | ✅ Completada | 6.1.3 |
 | 3.1.8 | Crear índices de performance en tabla `tasks` (por `created_at`, `archived`) | ⏳ Pendiente | 3.1.7 |
 
 **Validación:** Escribir unit tests para cada método CRUD.
@@ -267,9 +267,9 @@ Las tareas con dependencias se marcan con `⚠️ Depende de: [ID]`
 
 | ID | Tarea | Estado | Dependencias |
 |---|---|---|---|
-| 6.1.1 | Instalar `sqflite` y `path_provider` | ⏳ Pendiente | 1.1.8 |
-| 6.1.2 | Crear `DatabaseHelper` singleton en `/data/database/database_helper.dart` | ⏳ Pendiente | 2.1.2, 6.1.1 |
-| 6.1.3 | Definir esquema inicial de tablas `tasks` y `timer_sessions` | ⏳ Pendiente | 6.1.2 |
+| 6.1.1 | Instalar `sqflite` y `path_provider` | ✅ Completada | 1.1.8 |
+| 6.1.2 | Crear `DatabaseHelper` singleton en `/data/database/database_helper.dart` | ✅ Completada | 2.1.2, 6.1.1 |
+| 6.1.3 | Definir esquema inicial de tablas `tasks` y `timer_sessions` | 🔄 En progreso | 6.1.2 |
 | 6.1.4 | Implementar método `onCreate` para creación inicial de DB | ⏳ Pendiente | 6.1.3 |
 | 6.1.5 | Implementar método `onUpgrade` para migraciones futuras | ⏳ Pendiente | 6.1.4 |
 | 6.1.6 | Implementar control de versiones de base de datos | ⏳ Pendiente | 6.1.5 |
