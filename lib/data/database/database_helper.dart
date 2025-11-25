@@ -55,12 +55,23 @@ class DatabaseHelper {
       )
     ''');
 
+    // Índices para optimizar consultas frecuentes
+    await db.execute(
+      'CREATE INDEX idx_tasks_created_at ON tasks(created_at)',
+    );
+    await db.execute(
+      'CREATE INDEX idx_tasks_archived ON tasks(archived)',
+    );
+
     // TODO: Definir tabla timer_sessions cuando se implemente el módulo 4
   }
 
   /// Maneja las actualizaciones de versión de la base de datos
   Future<void> _upgradeDB(
-      sqflite.Database db, int oldVersion, int newVersion) async {
+    sqflite.Database db,
+    int oldVersion,
+    int newVersion,
+  ) async {
     // Implementar migraciones aquí cuando sea necesario
     if (oldVersion < newVersion) {
       // Lógica de migración

@@ -123,7 +123,7 @@ Las tareas con dependencias se marcan con `⚠️ Depende de: [ID]`
 | 3.1.5 | Crear métodos CRUD en `TaskRepository`: `create`, `getAll`, `getById`, `update`, `delete` | ✅ Completada | 3.1.4 |
 | 3.1.6 | Implementar validaciones de negocio (nombre no vacío, duración > 0) en repository | ✅ Completada | 3.1.5, 2.4.3 |
 | 3.1.7 | Definir esquema de tabla `tasks` con campos: `id`, `name`, `duration`, `color`, `created_at`, `archived` | ✅ Completada | 6.1.3 |
-| 3.1.8 | Crear índices de performance en tabla `tasks` (por `created_at`, `archived`) | ⏳ Pendiente | 3.1.7 |
+| 3.1.8 | Crear índices de performance en tabla `tasks` (por `created_at`, `archived`) | ✅ Completada | 3.1.7 |
 
 **Validación:** Escribir unit tests para cada método CRUD.
 
