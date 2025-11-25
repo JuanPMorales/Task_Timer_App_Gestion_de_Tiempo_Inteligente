@@ -18,6 +18,11 @@ class TaskRepositoryImpl implements TaskRepository {
 
   @override
   Future<Either<Failure, void>> createTask(Task task) async {
+    final validation = _validateTask(task);
+    if (validation.isLeft()) {
+      return validation;
+    }
+
     try {
       final taskModel = TaskModel.fromEntity(task);
       await localDataSource.createTask(taskModel);
@@ -70,6 +75,11 @@ class TaskRepositoryImpl implements TaskRepository {
 
   @override
   Future<Either<Failure, void>> updateTask(Task task) async {
+    final validation = _validateTask(task);
+    if (validation.isLeft()) {
+      return validation;
+    }
+
     try {
       final taskModel = TaskModel.fromEntity(task);
       await localDataSource.updateTask(taskModel);
@@ -79,5 +89,23 @@ class TaskRepositoryImpl implements TaskRepository {
     } catch (e) {
       return Left(UnknownFailure(e.toString()));
     }
+  }
+
+  Either<Failure, void> _validateTask(Task task) {
+    final errors = <String, String>{};
+
+    if (task.name.trim().isEmpty) {
+      errors['name'] = 'El nombre no puede estar vacío';
+    }
+
+    if (task.duration <= 0) {
+      errors['duration'] = 'La duración debe ser mayor a 0';
+    }
+
+    if (errors.isNotEmpty) {
+      return Left(ValidationFailure('Datos de tarea inválidos', errors));
+    }
+
+    return const Right(null);
   }
 }
