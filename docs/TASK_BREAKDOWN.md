@@ -116,8 +116,8 @@ Las tareas con dependencias se marcan con `⚠️ Depende de: [ID]`
 
 | ID | Tarea | Estado | Dependencias |
 |---|---|---|---|
-| 3.1.1 | Definir entidad `Task` en `/domain/entities/task.dart` con propiedades inmutables | ⏳ Pendiente | 2.1.3 |
-| 3.1.2 | Crear modelo `TaskModel` en `/data/models/task_model.dart` con serialización JSON↔SQLite | ⏳ Pendiente | 3.1.1 |
+| 3.1.1 | Definir entidad `Task` en `/domain/entities/task.dart` con propiedades inmutables | ✅ Completada | 2.1.3 |
+| 3.1.2 | Crear modelo `TaskModel` en `/data/models/task_model.dart` con serialización JSON↔SQLite | ✅ Completada | 3.1.1 |
 | 3.1.3 | Implementar interfaz `TaskRepository` en `/domain/repositories/task_repository.dart` | ⏳ Pendiente | 3.1.1 |
 | 3.1.4 | Implementar `TaskRepositoryImpl` en `/data/repositories/task_repository_impl.dart` | ⏳ Pendiente | 3.1.2, 3.1.3 |
 | 3.1.5 | Crear métodos CRUD en `TaskRepository`: `create`, `getAll`, `getById`, `update`, `delete` | ⏳ Pendiente | 3.1.4 |
